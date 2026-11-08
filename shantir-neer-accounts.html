@@ -1,0 +1,1036 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Shantir Neer Accounts</title>
+<style>
+:root{--bg:#f4f6f8;--card:#fff;--ink:#1c2733;--mute:#66758a;--line:#dde3ea;--pri:#0f6b6b;--pri-d:#0a4f4f;--pri-l:#e3f2f1;--red:#b3261e;--red-l:#fdecea;--amb:#8a5a00;--amb-l:#fff4d6;--grn:#1b7a3d;--grn-l:#e5f5ea}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,"Noto Sans Bengali",sans-serif}
+header.top{background:var(--pri-d);color:#fff;position:sticky;top:0;z-index:20}
+.topin{max-width:1200px;margin:0 auto;padding:10px 16px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.brand{font-weight:700;font-size:18px;letter-spacing:.2px}
+.brand small{display:block;font-weight:400;font-size:12px;opacity:.75}
+nav{display:flex;gap:4px;flex-wrap:wrap}
+nav button{background:transparent;border:0;color:#cfe6e4;padding:8px 12px;border-radius:8px;cursor:pointer;font:inherit}
+nav button:hover{background:rgba(255,255,255,.1)}
+nav button.on{background:#fff;color:var(--pri-d);font-weight:600}
+main{max-width:1200px;margin:0 auto;padding:16px}
+h2{margin:0 0 4px;font-size:22px}
+h3{margin:0 0 8px;font-size:16px}
+.sub{color:var(--mute);margin:0 0 14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;margin-bottom:16px}
+.row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.grow{flex:1}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-bottom:16px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px}
+.stat .l{color:var(--mute);font-size:13px}
+.stat .v{font-size:24px;font-weight:700;margin-top:2px}
+.stat .n{font-size:12px;color:var(--mute);margin-top:2px}
+.neg{color:var(--red)}.pos{color:var(--grn)}
+table{width:100%;border-collapse:collapse}
+th,td{padding:8px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{font-size:12px;text-transform:uppercase;letter-spacing:.4px;color:var(--mute);background:#fafbfc}
+td.r,th.r{text-align:right;font-variant-numeric:tabular-nums}
+tr.tot td{font-weight:700;background:#fafbfc}
+.scroll{overflow-x:auto}
+button,.btn{font:inherit;border:1px solid var(--line);background:#fff;color:var(--ink);border-radius:8px;padding:7px 12px;cursor:pointer}
+button:hover{background:#f0f3f6}
+button.pri{background:var(--pri);border-color:var(--pri);color:#fff}
+button.pri:hover{background:var(--pri-d)}
+button.sm{padding:3px 8px;font-size:13px}
+button.danger{color:var(--red)}
+button.ghost{background:transparent}
+input,select,textarea{font:inherit;padding:8px 10px;border:1px solid #c4ceda;border-radius:8px;background:#fff;color:var(--ink);width:100%}
+input:focus,select:focus,textarea:focus,button:focus-visible{outline:2px solid var(--pri);outline-offset:1px}
+label{display:block;font-size:13px;color:var(--mute)}
+label input,label select,label textarea{margin-top:3px;color:var(--ink);font-size:15px}
+label.chk{display:flex;gap:8px;align-items:center;color:var(--ink);font-size:15px}
+label.chk input{width:auto;margin:0}
+.mpick{display:flex;gap:6px;align-items:center}
+.mpick input{width:auto}
+.tag{display:inline-block;padding:1px 8px;border-radius:99px;font-size:12px;background:#eef1f5;color:#44546a}
+.tag.g{background:var(--grn-l);color:var(--grn)}.tag.r{background:var(--red-l);color:var(--red)}.tag.a{background:var(--amb-l);color:var(--amb)}
+.note{background:var(--amb-l);color:#5c3d00;border-radius:8px;padding:10px 12px;margin-bottom:12px;font-size:14px}
+.empty{color:var(--mute);padding:14px;text-align:center}
+.ov{position:fixed;inset:0;background:rgba(15,25,35,.5);z-index:50;display:flex;align-items:flex-start;justify-content:center;padding:30px 12px;overflow:auto}
+.dlg{background:#fff;border-radius:14px;padding:20px;width:100%;max-width:520px}
+.dlg.wide{max-width:760px}
+.dlg .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px 0}
+.dlg .grid .full{grid-column:1/-1}
+.btns{display:flex;gap:8px;justify-content:flex-end}
+#toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:#1c2733;color:#fff;padding:10px 16px;border-radius:10px;z-index:99;display:none}
+details.fund summary{cursor:pointer;color:var(--pri);font-weight:600;margin:8px 0}
+.bar{height:8px;background:#e8edf2;border-radius:99px;overflow:hidden}.bar i{display:block;height:100%;background:var(--pri)}
+.pill-row{display:flex;gap:6px;flex-wrap:wrap}
+/* ---------- report ---------- */
+.report{--brick:#c2622f;--brick-d:#8f4521;--brick-l:#fbefe7;--sky:#99c6f7;background:#fff;color:#2b2420;max-width:820px;margin:0 auto 24px;padding:26px 28px;border:1px solid var(--line);border-top:5px solid var(--brick);border-radius:10px;box-shadow:0 2px 12px rgba(0,0,0,.06);font-size:14px}
+.report .rhead{text-align:center;padding-bottom:12px;border-bottom:1px solid #ecd9cc;margin-bottom:12px}
+.report .rlogo{width:64px;height:68px;object-fit:cover;border-radius:10px;border:2px solid var(--brick);display:block;margin:0 auto 8px}
+.report h1{margin:0;font-size:30px;line-height:1.2;color:var(--brick-d);font-family:"Noto Sans Bengali","Kalpurush","Nirmala UI","Shonar Bangla","Vrinda",system-ui,sans-serif;font-weight:700}
+.report .ren{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:#7a6a60;margin-top:2px}
+.report .rsub{text-align:center;color:#2b2420;margin:8px 0 4px}
+.report .rsub b{display:inline-block;background:var(--brick-l);color:var(--brick-d);border-radius:99px;padding:3px 14px;font-size:13px}
+.report h4{margin:18px 0 6px;font-size:14px;color:var(--brick-d);border-bottom:2px solid var(--brick);padding-bottom:3px}
+.report table{margin-bottom:6px}
+.report th{background:var(--brick-l);color:var(--brick-d);font-size:11px}
+.report td,.report th{padding:6px 8px;border-bottom:1px solid #eadfd6}
+.report .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:12px 0}
+.report .kpi{border:1px solid #ecd9cc;border-top:3px solid var(--sky);border-radius:8px;padding:8px;text-align:center;background:#fff}
+.report .kpi:last-child{border-top-color:var(--brick);background:var(--brick-l)}
+.report .kpi b{display:block;font-size:16px;margin-top:2px}
+.report .kpi span{font-size:11px;color:#6b5c52}
+.report tr.tot td{background:var(--brick-l);color:var(--brick-d);border-bottom:2px solid var(--brick)}
+.report .small td,.report .small th{font-size:13px}
+.report td .nt{display:block;font-size:11px;color:#7a6a60}
+.report .muted{color:#6b5c52}
+.report .gen{text-align:center;margin:14px 0 0;font-size:11px;color:#7a6a60}
+@page{size:A4;margin:12mm}
+@media print{
+  body{background:#fff}
+  .no-print,header.top,#toast{display:none!important}
+  main{padding:0;max-width:none}
+  .report{border:0;border-top:5px solid #c2622f;border-radius:0;box-shadow:none;margin:0;padding:10px 0 0;max-width:none}
+  .report{font-size:12.5px}
+  .report h1{font-size:26px}
+  .report .rlogo{width:52px;height:56px;margin-bottom:4px}
+  .report .rhead{padding-bottom:8px;margin-bottom:8px}
+  .report .kpis{margin:8px 0}
+  .report td,.report th{padding:3px 8px}
+  .report .small td,.report .small th{font-size:12px}
+  .report h4{margin:12px 0 4px;break-after:avoid}
+  .report tr,.report .kpis{break-inside:avoid}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+@media(max-width:640px){
+  .dlg .grid{grid-template-columns:1fr}
+  main{padding:10px}
+  .report{padding:16px 12px;font-size:14px}
+  .report h1{font-size:26px}
+  .report .kpis{grid-template-columns:1fr 1fr}
+  .report .kpi b{font-size:15px}
+  .report td,.report th{padding:7px 5px}
+  .scroll{-webkit-overflow-scrolling:touch}
+  .row>button,.row .mpick{flex:1 1 auto}
+}
+.bdg{background:#e53935;color:#fff;border-radius:99px;padding:0 6px;font-size:11px;margin-left:5px}
+.bimg{height:40px;width:30px;object-fit:cover;border-radius:5px;vertical-align:middle;margin-right:8px;border:1px solid rgba(255,255,255,.4)}
+.hero{height:130px;border-radius:12px;background-size:cover;background-position:center 30%;margin-bottom:14px;position:relative;overflow:hidden}
+.hero div{position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,79,79,.92),rgba(10,79,79,.35));color:#fff;padding:18px 20px}
+.hero b{font-size:22px;display:block}.hero span{opacity:.85;font-size:13px}
+.note.ok{background:var(--grn-l);color:#124d27}
+@media print{.hero{display:none}}
+
+/* larger text for readability (esp. on phones) */
+body{font-size:16px}
+label,.stat .l{font-size:14px}
+.stat .n,.tag,.brand small,.hero span{font-size:13px}
+th{font-size:13px}
+button.sm{font-size:14px}
+@media(max-width:640px){
+  body{font-size:18px;line-height:1.5}
+  .brand{font-size:21px}
+  .brand small{font-size:14px}
+  nav button{font-size:17px;padding:10px 14px}
+  h2{font-size:26px}
+  h3{font-size:19px}
+  label,label.chk,.stat .l{font-size:16px}
+  label input,label select,label textarea,input,select,textarea{font-size:18px;padding:11px 12px}
+  button,.btn{font-size:17px;padding:10px 14px}
+  button.sm{font-size:16px;padding:7px 11px}
+  th{font-size:14px}
+  th,td{padding:10px 8px}
+  .stat .v{font-size:28px}
+  .stat .n,.tag,.note,.hero span{font-size:15px}
+  .tag{padding:2px 9px}
+  .dlg{padding:16px}
+  .dlg h3{font-size:21px}
+  .report{font-size:16px}
+  .report th{font-size:13px}
+  .report h4{font-size:16px}
+  .report .kpi b{font-size:17px}
+  #toast{font-size:17px}
+}
+@media print{body{font-size:15px}.report{font-size:14px}}
+</style>
+</head>
+<body>
+<header class="top no-print"><div class="topin">
+  <div class="brand" id="brand">Shantir Neer<small>Building accounts</small></div>
+  <nav id="nav"></nav>
+</div></header>
+<main id="app"></main>
+<div id="modal"></div>
+<div id="toast"></div>
+
+<script>
+/* ================= helpers ================= */
+const $=s=>document.querySelector(s);
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const pad=n=>String(n).padStart(2,'0');
+const uid=()=>Math.random().toString(36).slice(2,9)+Date.now().toString(36).slice(-4);
+const thisMonth=()=>{const d=new Date();return d.getFullYear()+'-'+pad(d.getMonth()+1)};
+const today=()=>thisMonth()+'-'+pad(new Date().getDate());
+const lastDay=m=>{const [y,mm]=m.split('-').map(Number);return m+'-'+pad(new Date(y,mm,0).getDate())};
+const defaultDate=m=>m===thisMonth()?today():lastDay(m);
+const mOf=d=>(d||'').slice(0,7);
+const mLabel=m=>{const [y,mm]=m.split('-').map(Number);return new Date(y,mm-1,1).toLocaleString('en-GB',{month:'long',year:'numeric'})};
+const addM=(m,k)=>{let [y,mm]=m.split('-').map(Number);mm+=k;y+=Math.floor((mm-1)/12);mm=((mm-1)%12+12)%12+1;return y+'-'+pad(mm)};
+const dFmt=d=>{if(!d)return'';const [y,m,dd]=d.split('-');return dd+'/'+m+'/'+y};
+const toU=d=>{const [y,m,dd]=d.split('-').map(Number);return Date.UTC(y,m-1,dd)};
+const dayCount=(a,b)=>Math.round((toU(b)-toU(a))/864e5)+1;
+const leaveDaysIn=(l,m)=>{const s=l.from>m+'-01'?l.from:m+'-01',e=l.to<lastDay(m)?l.to:lastDay(m);return e<s?0:dayCount(s,e)};
+const leaveDaysYear=(l,y)=>{const s=l.from>y+'-01-01'?l.from:y+'-01-01',e=l.to<y+'-12-31'?l.to:y+'-12-31';return e<s?0:dayCount(s,e)};
+const num=v=>Number(v)||0;
+const money=n=>{n=Math.round(num(n)*100)/100;return (n<0?'−':'')+Math.abs(n).toLocaleString('en-IN')};
+const cur=n=>db.settings.currency+' '+money(n);
+const sumOf=(a,f=x=>x.amount)=>a.reduce((t,x)=>t+num(f(x)),0);
+const BODLI='Bodli Darowan';
+const TYPES={service:'Service charge',extra:'Extra collection',special:'Special fund',garage:'Car garage rent',bike:'Bike stand rent',other:'Other income'};
+const LEAVE_TYPES=['Casual','Sick','Annual','Unpaid','Other'];
+
+/* ================= data ================= */
+const KEY='shantirNeerAccounts_v1';
+const DBV=6;
+const BILLCATS=['Water Bill','Electric Bill'];
+const isBill=c=>BILLCATS.includes(String(c||'').trim());
+const billTag=e=>e.billMonth&&isBill(e.category)?mLabel(e.billMonth)+' bill':'';
+const REPORT_LOGO='data:image/jpeg;base64,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';
+const BN_NAME='শান্তির নীড়';
+function rptHead(sub){const s=db.settings;return `<div class="rhead"><img class="rlogo" src="${REPORT_LOGO}" alt=""><h1>${BN_NAME}</h1><div class="ren">${esc(s.building)}</div>${s.address?`<div class="muted" style="font-size:12px">${esc(s.address)}</div>`:''}</div><div class="rsub">${sub}</div>`}
+const BUILDING_IMG='data:image/jpeg;base64,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';
+let migrated=null;
+const SAMPLE_EXP=[['Caretaker salary','Salary','monthly',1,0],['Cleaning supplies','Cleaning Materials','monthly',10,0],['Electricity bill','Electric Bill','monthly',10,0],['Water bill','Water Bill','monthly',10,0],['Lift maintenance','Lift Service Fee','monthly',5,0],['Generator fuel','Generator Fuel','monthly',15,0],['Repairs (if any)','Repair & Maintenance','monthly',28,0],['Other expenses (if any)','Other','monthly',28,0]].map(([name,category,freq,dueDay])=>({id:uid(),name,category,freq,dueDay,dueMonth:1,weekday:1,dueDate:'',amount:'',person:'',active:false,notes:'Example – edit it, or switch it on if it applies to your building.',from:'2026-04'}));
+function defaults(){
+  return {v:DBV,
+    settings:{building:'Shantir Neer',address:'',currency:'৳',openingBalance:0,balanceVerified:false,photo:'',startMonth:'2025-09',
+      dailyGuardRate:500,preparedBy:'Treasurer',approvedBy:'Secretary',approvedBy2:'President',
+      rates:[{from:'2000-01',amount:5000}],
+      flats:['201','202','301','302','401','402','501','502','601','602','701','702','801','802','901','902'].map(n=>({id:n,owner:''})),
+      slots:[{id:uid(),name:'Car Garage',type:'garage',rate:2000},...[1,2,3,4,5].map(i=>({id:uid(),name:'Honda '+i,type:'bike',rate:500}))],
+      recurring:[['Water Bill',15000],['Electric Bill',14000],['Moila Bill',4000],['Lift Service Fee',3000],['Internet',500],['Security Gas Cylinder',1500],['দিদার ভাই পার্কিং ভাড়া',2000],['মুক্তা চাচী পার্কিং ভাড়া',2000]].map(([category,amount])=>({id:uid(),category,amount}))},
+    staff:[{id:uid(),name:'Halim',role:'Guard',salary:12000,allowance:10,active:true},
+           {id:uid(),name:'Arif',role:'Guard',salary:11000,allowance:10,active:true},
+           {id:uid(),name:'Bua',role:'Cleaner',salary:3500,allowance:10,active:true}],
+    collections:[],expenses:[],leaves:[],advances:[],advRec:[],funds:[],notes:{},lastBackup:null,
+    expected:SAMPLE_EXP,checks:{},rem:{dailyOn:true,dailyTime:'20:00',reviewDay:25,trackFrom:today(),notify:false,lastNotifyDay:''},remLog:[],snooze:{},dismissed:{},dailyLog:{},monthReview:{},recon:{},imports:[]};
+}
+let storageOK=true;
+function migrate(d){
+  const df=defaults(),ver=d.v||1,s=d.settings||{};
+  const out=Object.assign(df,d,{settings:Object.assign(df.settings,s),rem:Object.assign(df.rem,d.rem||{})});
+  ['collections','expenses','leaves','advances','advRec','funds','staff','imports','remLog','expected'].forEach(k=>{if(!Array.isArray(out[k]))out[k]=[]});
+  ['notes','checks','snooze','dismissed','dailyLog','monthReview','recon'].forEach(k=>{if(!out[k]||typeof out[k]!=='object'||Array.isArray(out[k]))out[k]={}});
+  if(ver<2){
+    if(s.startMonth&&s.startMonth!=='2026-04'){out.settings.legacy={startMonth:s.startMonth,openingBalance:num(s.openingBalance)};out.settings.startMonth='2026-04';out.settings.openingBalance=0}
+    out.settings.balanceVerified=false;out.rem.trackFrom=today();
+  }
+  if(ver<3){if(out.settings.startMonth!=='2025-09'){out.settings.legacy={startMonth:out.settings.startMonth,openingBalance:num(out.settings.openingBalance)};out.settings.startMonth='2025-09';out.settings.openingBalance=0;out.settings.balanceVerified=false}out.staff.forEach(x=>{if(x.role==='Guard')x.allowance=10})}
+  if(ver<4)out.staff.forEach(x=>{const n={'Guard 1':'Halim','Guard 2':'Arif'}[x.name];if(n)renStaff(x.name,n,out.expenses),x.name=n});
+  if(ver<5){out.leaves.forEach(l=>{l.expenseId='';l.tempName=''});out.expenses.forEach(e=>{delete e.leaveId})}
+  if(ver<6){
+    const ren={'Didar Bhai':'দিদার ভাই পার্কিং ভাড়া','Mukta Chachi':'মুক্তা চাচী পার্কিং ভাড়া'};
+    out.expenses.forEach(e=>{if(ren[e.category])e.category=ren[e.category]});
+    (out.settings.recurring||[]).forEach(r=>{if(ren[r.category])r.category=ren[r.category]});
+    out.expected.forEach(x=>{if(ren[x.category])x.category=ren[x.category]});
+    out.expenses.forEach(e=>{if(isBill(e.category)&&!e.billMonth)e.billMonth=addM(mOf(e.date),-1)});
+  }
+  out.v=DBV;return out}
+function renStaff(o,n,ex){(ex||db.expenses).forEach(e=>{if(e.category==='Salary - '+o)e.category='Salary - '+n;else if(e.category==='Advance - '+o)e.category='Advance - '+n})}
+function load(){
+  let raw=null;
+  try{raw=localStorage.getItem(KEY);if(raw){const d=JSON.parse(raw);
+    if((d.v||1)<DBV){const bk=KEY+'_backup_v'+(d.v||1)+'_'+today();
+      try{localStorage.setItem(bk,raw);migrated={ok:true,bk}}catch(e){migrated={ok:false,raw}}}
+    return migrate(d)}}
+  catch(e){storageOK=false;if(raw){try{localStorage.setItem(KEY+'_unreadable_'+Date.now(),raw)}catch(x){}migrated={ok:false,raw}}}
+  return defaults();
+}
+function save(){if(migrated&&!migrated.ok)return;try{localStorage.setItem(KEY,JSON.stringify(db))}catch(e){storageOK=false;toast('⚠ Cannot save – browser storage is blocked. Use Settings → Backup now.')}}
+let db=load();
+if(migrated&&migrated.ok)save();
+let ui={open:{},tab:'dash',month:thisMonth(),year:new Date().getFullYear(),ry:0,imp:null};
+function toast(t){const e=$('#toast');e.textContent=t;e.style.display='block';clearTimeout(toast.t);toast.t=setTimeout(()=>e.style.display='none',2600)}
+
+/* ================= calculations ================= */
+function rateFor(m){const r=[...db.settings.rates].sort((a,b)=>a.from<b.from?-1:1);let a=r.length?num(r[0].amount):0;for(const x of r)if(x.from<=m)a=num(x.amount);return a}
+const fm=c=>c.forMonth||mOf(c.date);
+const svcPaid=(flat,m)=>sumOf(db.collections.filter(c=>c.type==='service'&&c.from===flat&&fm(c)===m));
+function openingGeneral(m){ // whole ledger: special fund receipts and spending are included
+  const s=db.settings,a=num(s.openingBalance);
+  if(m>=s.startMonth)return a+netGen(s.startMonth,addM(m,-1));
+  return a-netGen(m,addM(s.startMonth,-1)); // earlier months: worked backwards from the verified balance
+}
+function fundStat(f,upToM){ // cumulative through month inclusive
+  const r=sumOf(db.collections.filter(c=>c.fundId===f.id&&(!upToM||mOf(c.date)<=upToM)));
+  const s=sumOf(db.expenses.filter(e=>e.fundId===f.id&&(!upToM||mOf(e.date)<=upToM)));
+  return{raised:r,spent:s,bal:r-s};
+}
+function categories(){
+  const set=new Set(['Water Bill','Electric Bill','Moila Bill','Lift Service Fee','Internet','Security Gas Cylinder',BODLI,'Eid Bonus','Eid Bokshish','Cleaning Materials','Electric Bulb','LED Light Purchase & Replace','Lift Repair','Repair & Maintenance','Meeting Snacks','Photocopy','Other']);
+  db.settings.recurring.forEach(r=>set.add(r.category));
+  db.staff.forEach(s=>set.add('Salary - '+s.name));
+  db.expenses.forEach(e=>set.add(e.category));
+  return [...set].filter(Boolean).sort();
+}
+const dl=()=>`<datalist id="cats">${categories().map(c=>`<option value="${esc(c)}">`).join('')}</datalist>`;
+const staffName=id=>(db.staff.find(s=>s.id===id)||{name:'(removed)'}).name;
+
+/* ================= modal / form helpers ================= */
+const F={
+  text:(n,l,v='',x='',c='')=>`<label class="${c}">${l}<input name="${n}" value="${esc(v)}" ${x}></label>`,
+  num:(n,l,v='',x='',c='')=>`<label class="${c}">${l}<input name="${n}" type="number" step="any" min="0" value="${esc(v)}" ${x}></label>`,
+  date:(n,l,v='',x='',c='')=>`<label class="${c}">${l}<input name="${n}" type="date" value="${esc(v)}" ${x}></label>`,
+  month:(n,l,v='',x='',c='')=>`<label class="${c}">${l}<input name="${n}" type="month" value="${esc(v)}" ${x}></label>`,
+  area:(n,l,v='',x='',c='')=>`<label class="${c}">${l}<textarea name="${n}" rows="2" ${x}>${esc(v)}</textarea></label>`,
+  chk:(n,l,v,c='')=>`<label class="chk ${c}"><input type="checkbox" name="${n}" ${v?'checked':''}> ${l}</label>`,
+  sel:(n,l,opts,v='',x='',c='')=>`<label class="${c}">${l}<select name="${n}" ${x}>${opts.map(o=>{const [val,lab]=Array.isArray(o)?o:[o,o];return `<option value="${esc(val)}" ${String(val)===String(v)?'selected':''}>${esc(lab)}</option>`}).join('')}</select></label>`
+};
+function modal(title,body,onSave,opt={}){
+  $('#modal').innerHTML=`<div class="ov"><form class="dlg ${opt.wide?'wide':''}" id="mf"><h3>${title}</h3><div class="grid">${body}</div><div class="btns"><button type="button" data-act="closeModal">Cancel</button><button class="pri">${opt.save||'Save'}</button></div></form></div>`;
+  const f=$('#mf');
+  f.onsubmit=e=>{e.preventDefault();const d=Object.fromEntries(new FormData(f));f.querySelectorAll('input[type=checkbox]').forEach(c=>d[c.name]=c.checked);if(onSave(d)!==false){save();closeModal();render()}};
+  if(opt.init)opt.init(f);
+  setTimeout(()=>{const i=f.querySelector('input:not([type=checkbox]),select');i&&i.focus()},30);
+}
+function closeModal(){$('#modal').innerHTML=''}
+function confirmDel(msg,fn){if(confirm(msg)){fn();save();render();toast('Deleted')}}
+
+/* ================= views ================= */
+const TABS=[['dash','Dashboard'],['col','Collections'],['exp','Expenses'],['staff','Staff & Leave'],['funds','Special Funds'],['imp','Import'],['report','Monthly Report'],['set','Settings']];
+function mpick(){const y0=+ui.month.slice(0,4);return `<div class="mpick no-print"><select data-chg="yJump" style="width:auto" title="Jump to year">${[...new Set([2020,2021,2022,2023,2024,2025,2026,2027,new Date().getFullYear()+1,y0])].sort().map(y=>`<option ${y===y0?'selected':''}>${y}</option>`).join('')}</select><button data-act="mPrev" title="Previous month">‹</button><input type="month" value="${ui.month}" data-chg="mSet"><button data-act="mNext" title="Next month">›</button><button data-act="mNow" class="ghost">This month</button></div>`}
+
+function mgBanner(){
+  if(!migrated)return'';
+  if(!migrated.ok)return `<div class="note no-print">⚠ Your data was upgraded in memory only, because a safety copy could not be stored in the browser. <b>Nothing is being saved yet.</b> <button class="sm pri" data-act="mgContinue">Download my old data, then continue</button></div>`;
+  return ui.hideMg?'':`<div class="note ok no-print">✔ Your data was upgraded to the new version. A safety copy of everything as it was before is kept in this browser. <button class="sm" data-act="mgDownload">Download that copy</button> <button class="sm ghost" data-act="mgHide">Hide</button></div>`}
+function render(){
+  $('#brand').innerHTML=`<img class="bimg" src="${esc(db.settings.photo||BUILDING_IMG)}" alt="">`+esc(db.settings.building)+'<small>Building accounts</small>';
+  document.title=db.settings.building+' Accounts';
+  $('#nav').innerHTML=navHTML();
+  const v={dash:vDash,col:vCol,exp:vExp,staff:vStaff,funds:vFunds,rem:vRem,imp:vImp,report:vReport,set:vSet}[ui.tab];
+  $('#app').innerHTML=mgBanner()+(storageOK?'':'<div class="note">⚠ Your browser is blocking storage, so data will NOT be saved. Open this file in Chrome/Edge normally (not private mode) or use Backup often.</div>')+v();
+  if(ui.tab==='report'){bindReport();missPop()}
+}
+
+/* ---------- dashboard ---------- */
+function vDash(){
+  const m=ui.month,s=db.settings;
+  const gen=closingGeneral(m);
+  const fundBal=sumOf(db.funds.filter(f=>mOf(f.date)<=m),f=>fundStat(f,m).bal);
+  const colM=sumOf(db.collections.filter(c=>mOf(c.date)===m));
+  const expM=sumOf(db.expenses.filter(e=>mOf(e.date)===m));
+  const expected=rateFor(m)*s.flats.length;
+  const paidSvc=sumOf(db.collections.filter(c=>c.type==='service'&&fm(c)===m));
+  const unpaid=s.flats.filter(f=>svcPaid(f.id,m)<rateFor(m)).length;
+  const t=today();
+  const onLeave=db.leaves.filter(l=>l.from<=t&&l.to>=t&&okL(l));
+  const bk=db.lastBackup?Math.floor((Date.now()-db.lastBackup)/864e5):null;
+  const recent=[...db.collections.map(c=>({d:c.date,t:'in',l:TYPES[c.type]+(c.from?' – '+c.from:''),a:c.amount})),...db.expenses.map(e=>({d:e.date,t:'out',l:e.category+(billTag(e)?' ('+billTag(e)+')':'')+(e.note?' – '+e.note:''),a:e.amount}))].sort((a,b)=>a.d<b.d?1:-1).slice(0,8);
+  return `<div class="hero" style="background-image:url('${esc(s.photo||BUILDING_IMG)}')"><div><b>${esc(s.building)}</b><span>${esc(s.address||'Building accounts')}</span></div></div>
+  <div class="row"><div class="grow"><h2>Dashboard</h2><p class="sub">Showing <b>${mLabel(m)}</b> · today ${dFmt(t)}</p></div>${mpick()}</div>
+  
+  ${bk===null||bk>=30?`<div class="note no-print">💾 ${bk===null?'You have not made a backup yet.':'Last backup was '+bk+' days ago.'} Data lives in this browser only – <a href="#" data-act="backup">download a backup now</a>.</div>`:''}
+  ${!s.balanceVerified?`<div class="note">⚠ Go to <b>Settings</b> and enter the <b>verified closing balance of ${dFmt(lastDay(addM(s.startMonth,-1)))}</b>. Until you confirm it, balances are only estimates.</div>`:''}
+  <div class="cards">
+   <div class="stat"><div class="l">Closing balance</div><div class="v ${gen<0?'neg':''}">${cur(gen)}</div><div class="n">calculated closing balance, ${mLabel(m)}</div></div>
+   <div class="stat"><div class="l">Special fund balance</div><div class="v">${cur(fundBal)}</div><div class="n">${db.funds.filter(f=>!f.closed).length} open fund(s) · already counted in the balance</div></div>
+   <div class="stat"><div class="l">Collected in ${mLabel(m).split(' ')[0]}</div><div class="v">${cur(colM)}</div><div class="n">service charge ${cur(paidSvc)} of ${cur(expected)}</div></div>
+   <div class="stat"><div class="l">Expenses in ${mLabel(m).split(' ')[0]}</div><div class="v">${cur(expM)}</div><div class="n">includes special fund spending</div></div>
+   <div class="stat"><div class="l">Flats yet to pay ${mLabel(m).split(' ')[0]}</div><div class="v ${unpaid?'neg':'pos'}">${unpaid}</div><div class="n">of ${s.flats.length} flats</div></div>
+  </div>
+  <div class="row" style="align-items:stretch">
+   <div class="card grow" style="min-width:280px"><h3>On leave today</h3>${onLeave.length?onLeave.map(l=>`<div>🛡 <b>${esc(staffName(l.staffId))}</b> – ${esc(l.type)} until ${dFmt(l.to)}</div>`).join(''):'<div class="sub">Nobody is on leave.</div>'}</div>
+   <div class="card grow" style="min-width:280px"><h3>Quick actions</h3><div class="pill-row">
+     <button class="pri" data-act="addExp">＋ Expense</button><button class="pri" data-act="addInc">＋ Collection</button><button data-act="addLeave">＋ Leave</button><button data-act="recur">↻ Monthly recurring expenses</button><button data-act="goReport">🖨 Month-end report</button></div></div>
+  </div>
+  <div class="card"><h3>Recent entries</h3>${recent.length?`<table>${recent.map(r=>`<tr><td>${dFmt(r.d)}</td><td>${esc(r.l)}</td><td><span class="tag ${r.t==='in'?'g':'r'}">${r.t==='in'?'Received':'Paid'}</span></td><td class="r">${money(r.a)}</td></tr>`).join('')}</table>`:'<div class="empty">No entries yet.</div>'}</div>`;
+}
+
+/* ---------- collections ---------- */
+function vCol(){
+  const m=ui.month,s=db.settings,rate=rateFor(m);
+  const all=db.collections.filter(c=>mOf(c.date)===m).sort((a,b)=>a.date<b.date?-1:1);
+  const paidAll=sumOf(db.collections.filter(c=>c.type==='service'&&fm(c)===m));
+  return `<div class="row"><div class="grow"><h2>Collections</h2><p class="sub">Service charge is <b>${cur(rate)}</b> per flat for ${mLabel(m)}</p></div>${mpick()}</div>
+  <div class="card"><div class="row"><h3 class="grow">Service charge for ${mLabel(m)}</h3><button data-act="payAll">Mark all unpaid flats as paid</button><button class="pri" data-act="addInc">＋ Other collection</button></div>
+  <div class="scroll"><table><tr><th>Flat</th><th>Owner / resident</th><th class="r">Paid</th><th class="r">Due this month</th><th></th></tr>
+  ${s.flats.map(f=>{const p=svcPaid(f.id,m),d=Math.max(0,rate-p);return `<tr><td><b>${esc(f.id)}</b></td><td>${esc(f.owner)}</td><td class="r">${money(p)}</td><td class="r ${d?'neg':''}">${d?money(d):'<span class="tag g">Paid</span>'}</td><td class="r">${d?`<button class="sm pri" data-act="payFull" data-id="${esc(f.id)}">Receive ${money(d)}</button> `:''}<button class="sm" data-act="payPart" data-id="${esc(f.id)}">Other amount…</button></td></tr>`}).join('')}
+  <tr class="tot"><td colspan="2">Total</td><td class="r">${money(paidAll)}</td><td class="r">${money(Math.max(0,rate*s.flats.length-paidAll))}</td><td></td></tr></table></div>
+  <p class="sub" style="margin:8px 0 0">Receipts are reported in the month of the <b>date received</b>.</p></div>
+  <div class="card"><h3>All receipts dated ${mLabel(m)}</h3>
+  ${all.length?`<div class="scroll"><table><tr><th>Date</th><th>Type</th><th>From</th><th>For</th><th>Note</th><th class="r">Amount</th><th></th></tr>${all.map(c=>`<tr><td>${dFmt(c.date)}</td><td>${TYPES[c.type]}</td><td>${esc(c.from||'')}</td><td>${c.type==='service'?mLabel(fm(c)):c.fundId?esc((db.funds.find(f=>f.id===c.fundId)||{}).name||''):''}</td><td>${esc(c.note||'')}</td><td class="r">${money(c.amount)}</td><td class="r"><button class="sm" data-act="editInc" data-id="${c.id}">Edit</button> <button class="sm danger" data-act="delInc" data-id="${c.id}">Delete</button></td></tr>`).join('')}<tr class="tot"><td colspan="5">Total received</td><td class="r">${money(sumOf(all))}</td><td></td></tr></table></div>`:'<div class="empty">No receipts dated this month.</div>'}</div>`;
+}
+function incForm(c,pre={}){
+  const edit=!!c;c=c||Object.assign({date:defaultDate(ui.month),type:'service',from:'',amount:'',note:'',forMonth:ui.month,fundId:''},pre);
+  const s=db.settings;
+  const funds=db.funds.filter(f=>!f.closed||f.id===c.fundId);
+  modal(edit?'Edit receipt':'Add collection',
+   F.date('date','Date received',c.date,'required')+
+   F.sel('type','Type',Object.entries(TYPES),c.type)+
+   F.text('from','From (flat no. or slot name)',c.from,'list="fromlist" autocomplete="off"')+
+   `<datalist id="fromlist">${s.flats.map(f=>`<option value="${esc(f.id)}">`).join('')}${s.slots.map(x=>`<option value="${esc(x.name)}">`).join('')}</datalist>`+
+   F.num('amount','Amount',c.amount,'required')+
+   F.month('forMonth','Service charge is for month',c.forMonth||mOf(c.date),'','cond" data-for="service')+
+   F.sel('fundId','Special fund',[['','— choose —'],...funds.map(f=>[f.id,f.name])],c.fundId,'','cond" data-for="special')+
+   F.text('note','Note / purpose',c.note,'','full'),
+   d=>{
+    if(d.type==='special'&&!d.fundId){alert('Choose the special fund (create one in the Special Funds tab first).');return false}
+    const rec={date:d.date,type:d.type,from:d.from.trim(),amount:num(d.amount),note:d.note.trim(),forMonth:d.type==='service'?(d.forMonth||mOf(d.date)):'',fundId:d.type==='special'?d.fundId:''};
+    if(!rec.amount){alert('Enter an amount');return false}
+    if(edit)Object.assign(c,rec);else db.collections.push(Object.assign({id:uid()},rec));
+    toast('Saved');
+   },{init:f=>{
+     const t=f.querySelector('[name=type]'),amt=f.querySelector('[name=amount]'),from=f.querySelector('[name=from]');
+     const upd=()=>{f.querySelectorAll('.cond').forEach(e=>e.style.display=e.dataset.for===t.value?'':'none')};
+     t.onchange=()=>{upd();if(!edit&&!amt.value){if(t.value==='service')amt.value=rateFor(ui.month);}};upd();
+     from.onchange=()=>{const sl=db.settings.slots.find(x=>x.name.toLowerCase()===from.value.trim().toLowerCase());if(sl&&!amt.value){amt.value=sl.rate;t.value=sl.type;upd()}};
+   }});
+}
+function receive(flat,amount,extra={}){db.collections.push(Object.assign({id:uid(),date:defaultDate(ui.month),type:'service',from:flat,amount,note:'',forMonth:ui.month,fundId:''},extra));save();render();toast('Received '+cur(amount)+' from '+flat)}
+
+/* ---------- expenses ---------- */
+function vExp(){
+  const m=ui.month,list=db.expenses.filter(e=>mOf(e.date)===m).sort((a,b)=>a.date<b.date?-1:1);
+  const prev=db.expenses.filter(e=>mOf(e.date)===addM(m,-1));
+  const cat={},pc={};
+  list.forEach(e=>{cat[e.category]=(cat[e.category]||0)+e.amount});
+  prev.forEach(e=>{pc[e.category]=(pc[e.category]||0)+e.amount});
+  const keys=[...new Set([...Object.keys(cat),...Object.keys(pc)])].sort((a,b)=>(cat[b]||0)-(cat[a]||0));
+  const tot=sumOf(list);
+  return `<div class="row"><div class="grow"><h2>Expenses</h2><p class="sub">Record what was paid. Most months look alike – use “Add monthly recurring” to fill the usual ones in one go.</p></div>${mpick()}</div>
+  <div class="card"><div class="row"><h3 class="grow">${mLabel(m)} · total <b>${cur(tot)}</b></h3><button data-act="recur">↻ Add monthly recurring</button><button class="pri" data-act="addExp">＋ Add expense</button></div>
+  ${list.length?`<div class="scroll"><table><tr><th>Date</th><th>Category</th><th>Note / paid to</th><th>Paid from</th><th class="r">Amount</th><th></th></tr>${list.map(e=>`<tr><td>${dFmt(e.date)}</td><td>${esc(e.category)}${billTag(e)?' <span class="tag a">'+esc(billTag(e))+'</span>':''}${e.leaveId?' <span class="tag a">leave</span>':''}</td><td>${esc(e.note||'')}</td><td>${e.fundId?'<span class="tag a">'+esc((db.funds.find(f=>f.id===e.fundId)||{}).name||'fund')+'</span>':'General'}</td><td class="r">${money(e.amount)}</td><td class="r"><button class="sm" data-act="editExp" data-id="${e.id}">Edit</button> <button class="sm danger" data-act="delExp" data-id="${e.id}">Delete</button></td></tr>`).join('')}</table></div>`:'<div class="empty">No expenses recorded for this month yet.</div>'}</div>
+  ${keys.length?`<div class="card"><h3>By category – compared with ${mLabel(addM(m,-1))}</h3><div class="scroll"><table><tr><th>Category</th><th class="r">This month</th><th class="r">Last month</th><th class="r">Change</th></tr>${keys.map(k=>{const a=cat[k]||0,b=pc[k]||0,d=a-b;return `<tr><td>${esc(k)}</td><td class="r">${a?money(a):'–'}</td><td class="r">${b?money(b):'–'}</td><td class="r ${d>0?'neg':d<0?'pos':''}">${d?(d>0?'+':'')+money(d):'–'}</td></tr>`}).join('')}</table></div></div>`:''}`;
+}
+function expForm(e,pre={}){
+  const edit=!!e;e=e||Object.assign({date:defaultDate(ui.month),category:'',amount:'',note:'',fundId:''},pre);
+  modal(edit?'Edit expense':'Add expense',
+   F.date('date','Date paid',e.date,'required')+
+   F.text('category','Category / item',e.category,'list="cats" required autocomplete="off"')+dl()+
+   F.month('billMonth','Bill for which month? (usually last month)',e.billMonth||addM(mOf(e.date),-1),'','full bm')+
+   F.num('amount','Amount',e.amount,'required')+
+   F.sel('fundId','Paid from',[['','General fund'],...db.funds.filter(f=>!f.closed||f.id===e.fundId).map(f=>[f.id,'Special fund: '+f.name])],e.fundId)+
+   F.text('note','Note / paid to',e.note,'','full'),
+   d=>{const rec={date:d.date,category:d.category.trim(),amount:num(d.amount),note:d.note.trim(),fundId:d.fundId};
+     if(!rec.category||!rec.amount){alert('Enter category and amount');return false}
+     if(isBill(rec.category)){rec.billMonth=d.billMonth||addM(mOf(rec.date),-1);
+       const dup=db.expenses.find(x=>x!==e&&x.category===rec.category&&x.billMonth===rec.billMonth);
+       if(dup&&!confirm(rec.category+' for '+mLabel(rec.billMonth)+' is already recorded ('+dFmt(dup.date)+', '+money(dup.amount)+'). Save this one as well?'))return false}
+     else rec.billMonth='';
+     if(!edit&&db.expenses.some(x=>x.date===rec.date&&x.category===rec.category&&num(x.amount)===rec.amount&&(x.fundId||'')===(rec.fundId||''))&&!confirm('An identical expense (same date, category and amount) is already recorded. Add it again?'))return false;
+     if(edit){Object.assign(e,rec);if(!rec.billMonth)delete e.billMonth}else{if(!rec.billMonth)delete rec.billMonth;const nw=Object.assign({id:uid()},rec);db.expenses.push(nw);if(pre.linkKey)linkCheck(pre.linkKey,nw.id)}toast('Saved')},
+   {init:f=>{const cat=f.elements.category,dt=f.elements.date,bm=f.elements.billMonth,lab=bm.closest('label');let touched=!!(e.billMonth&&edit);
+     const sync=()=>{lab.style.display=isBill(cat.value)?'':'none';bm.required=isBill(cat.value)};
+     cat.addEventListener('input',sync);bm.addEventListener('input',()=>touched=true);
+     dt.addEventListener('input',()=>{if(!touched&&dt.value)bm.value=addM(mOf(dt.value),-1)});sync()}});
+}
+function recurForm(){
+  const m=ui.month,s=db.settings;
+  const lines=[...db.staff.filter(x=>x.active).map(x=>({category:'Salary - '+x.name,amount:x.salary-advDed(x.id),sid:x.id,ded:advDed(x.id)})),...s.recurring.map(r=>({category:r.category,amount:r.amount}))];
+  const have=new Set(db.expenses.filter(e=>mOf(e.date)===m&&!e.fundId).map(e=>e.category));
+  const prevAmt={};db.expenses.filter(e=>mOf(e.date)===addM(m,-1)&&!e.fundId).forEach(e=>prevAmt[e.category]=e.amount);
+  modal('Monthly recurring expenses – '+mLabel(m),
+   F.date('date','Date to record',defaultDate(m),'required','full')+
+   `<div class="full scroll"><p class="sub" style="margin:0 0 6px">Tick what applies this month and adjust amounts (e.g. electric & water bills change). Items already recorded this month are unticked. “Last month” shows what you paid then.</p><table><tr><th></th><th>Item</th><th>Bill month</th><th>Last month</th><th>Amount</th></tr>
+   ${lines.map((l,i)=>`<tr><td><input type="checkbox" name="on${i}" ${have.has(l.category)?'':'checked'} style="width:auto"></td><td>${esc(l.category)}${have.has(l.category)?' <span class="tag a">already added</span>':''}<input type="hidden" name="cat${i}" value="${esc(l.category)}"></td><td>${isBill(l.category)?`<input type="month" name="bm${i}" class="bmi" value="${addM(m,-1)}" style="min-width:140px">`:'<span class="muted">–</span>'}</td><td class="muted">${prevAmt[l.category]?money(prevAmt[l.category]):'–'}</td><td><input name="amt${i}" type="number" step="any" min="0" value="${prevAmt[l.category]&&!l.category.startsWith('Salary')?prevAmt[l.category]:l.amount}"></td></tr>`).join('')}</table></div>`,
+   d=>{let n=0;lines.forEach((l,i)=>{if(d['on'+i]&&num(d['amt'+i])>0){const nx={id:uid(),date:d.date,category:d['cat'+i],amount:num(d['amt'+i]),note:l.ded?'Advance deducted '+money(l.ded):'',fundId:''};if(isBill(nx.category))nx.billMonth=d['bm'+i]||addM(mOf(d.date),-1);db.expenses.push(nx);if(l.ded&&!db.advRec.some(r=>r.staffId===l.sid&&r.month===m))db.advRec.push({id:uid(),staffId:l.sid,month:m,amount:l.ded});n++}});toast(n+' expense(s) added')},{wide:true,save:'Add selected',init:f=>{let t=false;f.querySelectorAll('.bmi').forEach(x=>x.addEventListener('input',()=>t=true));
+     f.elements.date.addEventListener('input',ev=>{if(!t&&ev.target.value)f.querySelectorAll('.bmi').forEach(x=>x.value=addM(mOf(ev.target.value),-1))})}});
+}
+
+/* ---------- staff & leave ---------- */
+function vStaff(){
+  const y=ui.year,t=today();
+  const leaves=db.leaves.filter(l=>l.from.slice(0,4)<=String(y)&&l.to.slice(0,4)>=String(y)).sort((a,b)=>a.from<b.from?1:-1);
+  return `<div class="row"><div class="grow"><h2>Staff & Leave</h2><p class="sub">Leave of guards. Bodli Darowan payment is not linked to leave – add it as a normal expense.</p></div>
+   <label style="width:110px">Year<select data-chg="ySet">${[y-2,y-1,y,y+1].map(v=>`<option ${v===y?'selected':''}>${v}</option>`).join('')}</select></label>
+   <button data-act="addStaff">＋ Staff</button><button class="pri" data-act="addLeave">＋ Record leave</button></div>
+  <div class="cards">${db.staff.map(s=>{
+    if(s.role!=='Guard')return `<div class="stat" style="${s.active?'':'opacity:.55'}"><b>${esc(s.name)}</b><div class="n">${esc(s.role)} · no leave</div><div style="margin-top:8px"><button class="sm" data-act="editStaff" data-id="${s.id}">Edit</button></div></div>`;
+    const mine=db.leaves.filter(l=>l.staffId===s.id&&okL(l)),pend=db.leaves.filter(l=>l.staffId===s.id&&l.status==='Pending').length;
+    const used=sumOf(mine.filter(l=>l.type!=='Unpaid'),l=>leaveDaysYear(l,y)),unp=sumOf(mine.filter(l=>l.type==='Unpaid'),l=>leaveDaysYear(l,y));
+    const rem=num(s.allowance)-used,away=mine.some(l=>l.from<=t&&l.to>=t);
+    return `<div class="stat" style="${s.active?'':'opacity:.55'}"><div class="row"><b class="grow">${esc(s.name)}</b>${away?'<span class="tag a">on leave</span>':''}${s.active?'':'<span class="tag">inactive</span>'}</div><div class="n">${esc(s.role)} · salary ${cur(s.salary)}</div>
+     <div class="v ${rem<0?'neg':''}">${rem} <span style="font-size:14px;font-weight:400">days left</span></div>
+     <div class="n">${used} of ${s.allowance} paid days used in ${y}${pend?' · ⏳ '+pend+' pending':''}${unp?` · ${unp} unpaid`:''}</div>
+     <div class="bar" style="margin:8px 0"><i style="width:${Math.min(100,num(s.allowance)?used/s.allowance*100:0)}%"></i></div>
+     <button class="sm" data-act="editStaff" data-id="${s.id}">Edit</button> <button class="sm" data-act="addLeave" data-id="${s.id}">Add leave</button></div>`}).join('')}</div>
+  <div class="card"><h3>Leave log ${y}</h3>${leaves.length?`<div class="scroll"><table><tr><th>Staff</th><th>From</th><th>To</th><th class="r">Days</th><th>Type</th><th>Reason</th><th></th></tr>${leaves.map(l=>{const ex=db.expenses.find(e=>e.id===l.expenseId);return `<tr><td>${esc(staffName(l.staffId))}</td><td>${dFmt(l.from)}</td><td>${dFmt(l.to)}</td><td class="r">${dayCount(l.from,l.to)}</td><td><span class="tag ${l.type==='Unpaid'?'r':l.type==='Sick'?'a':''}">${esc(l.type)}</span></td><td>${esc(l.reason||'')}</td><td class="r"><button class="sm" data-act="editLeave" data-id="${l.id}">Edit</button> <button class="sm danger" data-act="delLeave" data-id="${l.id}">Delete</button></td></tr>`}).join('')}</table></div>`:'<div class="empty">No leave recorded for '+y+'.</div>'}</div>`;
+}
+function staffForm(s){
+  const edit=!!s;s=s||{name:'',role:'Guard',salary:'',allowance:10,active:true};
+  modal(edit?'Edit staff':'Add staff',F.text('name','Name',s.name,'required')+F.sel('role','Role',['Guard','Cleaner','Other'],s.role)+F.num('salary','Monthly salary',s.salary)+F.num('allowance','Paid leave days per year',s.allowance)+F.chk('active','Currently working',s.active,'full'),
+   d=>{const r={name:d.name.trim(),role:d.role,salary:num(d.salary),allowance:num(d.allowance),active:d.active};if(!r.name)return false;if(edit&&r.name!==s.name)renStaff(s.name,r.name);if(edit)Object.assign(s,r);else db.staff.push(Object.assign({id:uid()},r))});
+}
+function leaveForm(l,staffId){
+  const edit=!!l;
+  l=l||{staffId:staffId||(db.staff.find(s=>s.active&&s.role==='Guard')||{}).id,type:'Casual',from:defaultDate(ui.month),to:defaultDate(ui.month),reason:'',tempName:'',rate:db.settings.dailyGuardRate,tempDays:'',payDate:''};
+  const ex=edit&&db.expenses.find(e=>e.id===l.expenseId);
+  modal(edit?'Edit leave':'Record leave',
+   F.sel('staffId','Staff',db.staff.filter(s=>s.role==='Guard').map(s=>[s.id,s.name+' ('+s.role+')']),l.staffId)+F.sel('type','Leave type',LEAVE_TYPES,l.type)+F.sel('status','Application',['Approved','Pending','Rejected'],l.status||'Approved')+
+   F.date('from','From',l.from,'required')+F.date('to','To (last day of leave)',l.to,'required')+F.text('reason','Reason',l.reason,'','full'),
+   d=>{
+    if(d.to<d.from){alert('“To” date is before “From” date');return false}
+    if(d.status==='Approved'&&d.type!=='Unpaid'){const st=db.staff.find(x=>x.id===d.staffId),yy=d.from.slice(0,4),u=sumOf(db.leaves.filter(x=>x.staffId===d.staffId&&x!==l&&okL(x)&&x.type!=='Unpaid'),x=>leaveDaysYear(x,yy));if(u+leaveDaysYear({from:d.from,to:d.to},yy)>num(st.allowance)&&!confirm('Leave balance is not enough. Continue? (Better record the extra days as Unpaid.)'))return false}
+     const rec={staffId:d.staffId,status:d.status,type:d.type,from:d.from,to:d.to,reason:d.reason.trim()};
+     if(edit)Object.assign(l,rec);else db.leaves.push(Object.assign({id:uid()},rec));
+    toast('Leave saved');
+   },{wide:true});
+}
+
+/* ---------- special funds ---------- */
+function vFunds(){
+  const s=db.settings;
+  return `<div class="row"><div class="grow"><h2>Special Funds</h2><p class="sub">Extra collections for a specific purpose (repair, new meter, etc.). Money raised and spent here is also counted in the monthly collections, expenses and closing balance.</p></div><button class="pri" data-act="addFund">＋ New special fund</button></div>
+  ${db.funds.length?db.funds.slice().sort((a,b)=>a.closed-b.closed||(a.date<b.date?1:-1)).map(f=>{
+    const st=fundStat(f),exps=db.expenses.filter(e=>e.fundId===f.id).sort((a,b)=>a.date<b.date?-1:1),cols=db.collections.filter(c=>c.fundId===f.id);
+    const per=num(f.perFlat),target=num(f.target)||per*s.flats.length;
+    return `<div class="card"><div class="row"><h3 class="grow" style="margin:0">${esc(f.name)} ${f.closed?'<span class="tag">closed</span>':'<span class="tag g">open</span>'}</h3>
+      <button class="sm" data-act="fundSpend" data-id="${f.id}">＋ Spend from fund</button><button class="sm" data-act="editFund" data-id="${f.id}">Edit</button><button class="sm" data-act="toggleFund" data-id="${f.id}">${f.closed?'Reopen':'Close'}</button><button class="sm danger" data-act="delFund" data-id="${f.id}">Delete</button></div>
+      <p class="sub" style="margin:4px 0 10px">Raised ${dFmt(f.date)} · <b>Purpose:</b> ${esc(f.purpose||'—')}${per?` · ${cur(per)} per flat`:''}</p>
+      <div class="cards" style="margin-bottom:8px"><div class="stat"><div class="l">Raised</div><div class="v">${cur(st.raised)}</div>${target?`<div class="n">target ${cur(target)}</div>`:''}</div><div class="stat"><div class="l">Spent</div><div class="v">${cur(st.spent)}</div></div><div class="stat"><div class="l">Balance</div><div class="v ${st.bal<0?'neg':''}">${cur(st.bal)}</div></div></div>
+      ${target?`<div class="bar"><i style="width:${Math.min(100,st.raised/target*100)}%"></i></div>`:''}
+      <details class="fund" data-fid="${f.id}" ${ui.open[f.id]?'open':''}><summary>Flat-wise collection (${s.flats.filter(x=>sumOf(cols.filter(c=>c.from===x.id))>=per&&per>0).length}/${s.flats.length} paid)</summary>
+      <div class="scroll"><table><tr><th>Flat</th><th>Owner</th><th class="r">Paid</th><th class="r">Due</th><th></th></tr>${s.flats.map(x=>{const p=sumOf(cols.filter(c=>c.from===x.id)),d=Math.max(0,per-p);return `<tr><td><b>${esc(x.id)}</b></td><td>${esc(x.owner)}</td><td class="r">${money(p)}</td><td class="r ${d?'neg':''}">${per?(d?money(d):'<span class="tag g">Paid</span>'):'–'}</td><td class="r">${d?`<button class="sm pri" data-act="fundPay" data-id="${f.id}" data-flat="${esc(x.id)}" data-amt="${d}">Receive ${money(d)}</button> `:''}<button class="sm" data-act="fundPayOther" data-id="${f.id}" data-flat="${esc(x.id)}">Other…</button></td></tr>`}).join('')}</table></div></details>
+      ${exps.length?`<details class="fund"><summary>Spending (${exps.length})</summary><table>${exps.map(e=>`<tr><td>${dFmt(e.date)}</td><td>${esc(e.category)}</td><td>${esc(e.note||'')}</td><td class="r">${money(e.amount)}</td><td class="r"><button class="sm" data-act="editExp" data-id="${e.id}">Edit</button></td></tr>`).join('')}</table></details>`:''}</div>`}).join(''):'<div class="card empty">No special funds yet. Click “New special fund” when you decide to raise extra money.</div>'}`;
+}
+function fundForm(f){
+  const edit=!!f;f=f||{name:'',purpose:'',date:defaultDate(ui.month),perFlat:'',target:''};
+  modal(edit?'Edit special fund':'New special fund',F.text('name','Fund name (e.g. Lift repair 2026)',f.name,'required','full')+F.area('purpose','Purpose (printed on the monthly report)',f.purpose,'required','full')+F.date('date','Date raised',f.date,'required')+F.num('perFlat','Amount per flat (optional)',f.perFlat)+F.num('target','Total target (optional)',f.target),
+   d=>{const r={name:d.name.trim(),purpose:d.purpose.trim(),date:d.date,perFlat:num(d.perFlat),target:num(d.target)};if(!r.name)return false;if(edit)Object.assign(f,r);else db.funds.push(Object.assign({id:uid(),closed:false},r))});
+}
+
+/* ---------- report ---------- */
+function vReport(){
+  if(ui.ry)return vYear();
+  const m=ui.month,rc=db.recon[m]||{};
+  return `<div class="row no-print"><div class="grow"><h2>Monthly Report</h2><p class="sub">Check the preview, then print or save as PDF.</p></div>${mpick()}<button data-act="yrToggle">📅 Year summary</button><button class="pri" data-act="print">🖨 Print / Save as PDF</button></div>
+  <p class="sub no-print" style="margin:0 0 10px">Tip: on your phone tap <b>Print / Save as PDF</b>, then choose <b>Save as PDF</b> (Android) or Share → Print → pinch-out on the preview (iPhone). Turn off “Headers and footers”.</p>
+  ${reportHTML(m)}`;
+}
+function bindReport(){
+  const up=()=>{const a=$('#actualBal').value;db.recon[ui.month]={actual:a===''?null:num(a),incSpecial:$('#incSp').checked,note:$('#reconNote').value,ts:Date.now()};save();const p=$('.report');if(p)p.outerHTML=reportHTML(ui.month)};
+  ['#actualBal','#incSp','#reconNote'].forEach(q=>{const e=$(q);if(e)e.oninput=up});
+  const r=$('#remarks');if(r)r.oninput=()=>{db.notes[ui.month]=r.value;save();const p=$('.report');if(p)p.outerHTML=reportHTML(ui.month)}}
+function reportHTML(m){
+  const s=db.settings;
+  const col=db.collections.filter(c=>mOf(c.date)===m&&!c.fundId).sort((a,b)=>a.date<b.date?-1:1);
+  const exp=db.expenses.filter(e=>mOf(e.date)===m&&!e.fundId).sort((a,b)=>a.date<b.date?-1:1);
+  const by=t=>col.filter(c=>c.type===t);
+  const opening=openingGeneral(m),totC=sumOf(col),totE=sumOf(exp),closing=opening+totC-totE;
+  const svc=by('service'),svcFlats=new Set(svc.map(c=>c.from)).size;
+  const cats={};exp.forEach(e=>{(cats[e.category]=cats[e.category]||{n:0,a:0});cats[e.category].n++;cats[e.category].a+=e.amount});
+  const catRows=Object.entries(cats).sort((a,b)=>b[1].a-a[1].a);
+  // funds
+  const fr=db.funds.filter(f=>mOf(f.date)<=m).map(f=>{
+    const cs=db.collections.filter(c=>c.fundId===f.id),es=db.expenses.filter(e=>e.fundId===f.id);
+    const rp=sumOf(cs.filter(c=>mOf(c.date)<m)),sp=sumOf(es.filter(e=>mOf(e.date)<m));
+    const ri=sumOf(cs.filter(c=>mOf(c.date)===m)),si=sumOf(es.filter(e=>mOf(e.date)===m));
+    return{f,open:rp-sp,ri,si,close:rp-sp+ri-si,items:es.filter(e=>mOf(e.date)===m),n:cs.filter(c=>mOf(c.date)===m).length};
+  }).filter(x=>x.ri||x.si||x.close!==0||mOf(x.f.date)===m);
+  const spOpen=sumOf(fr,x=>x.open),spClose=sumOf(fr,x=>x.close);
+  // dues
+  
+  // leaves
+  const lv=db.leaves.filter(l=>leaveDaysIn(l,m)>0);
+  const T=monthTotals(m),prevClose=closingGeneral(addM(m,-1)),first=m===s.startMonth;
+  const warn=(m<s.startMonth?`<p class="muted"><i>Historical month (before ${mLabel(s.startMonth)}): the opening balance is worked backwards from the verified closing balance of ${dFmt(lastDay(addM(s.startMonth,-1)))}. It is only reliable if every entry from this month onwards has been recorded.</i></p>`:'')+(!s.balanceVerified?`<p class="muted"><i>⚠ The verified opening balance has not been confirmed in Settings – figures are provisional.</i></p>`:'');
+  const reconRows=T.has?`<tr><td>Calculated total${T.incSpecial?'':' (general fund only)'}</td><td class="r">${money(T.calc)}</td></tr><tr><td>Actual cash/bank balance – <b>reconciled</b> (entered by user)</td><td class="r">${money(T.actual)}</td></tr><tr class="tot"><td>Difference (actual − calculated)</td><td class="r">${Math.abs(T.diff)<0.005?'0 – matches':money(T.diff)}</td></tr>${db.recon[m]&&db.recon[m].note?`<tr><td colspan="2" class="muted">Note: ${esc(db.recon[m].note)}</td></tr>`:''}`:`<tr><td colspan="2" class="muted">Actual cash/bank balance: not yet entered – the figures above are <b>calculated</b> from recorded entries only.</td></tr>`;
+  return `<div class="report">
+  ${rptHead('<b>Monthly Accounts Report – '+mLabel(m)+'</b>')}${warn}
+  <div class="kpis"><div class="kpi"><span>Opening balance</span><b>${cur(opening)}</b></div><div class="kpi"><span>Total collections</span><b>${cur(totC)}</b></div><div class="kpi"><span>Total expenses</span><b>${cur(totE)}</b></div><div class="kpi"><span>Closing balance</span><b>${cur(closing)}</b></div></div>
+
+  <h4>1. Collections</h4>
+  <table><tr><th>Source</th><th class="r">Amount</th></tr>
+  <tr><td>Service charge (${svcFlats} of ${s.flats.length} flats paid, ${cur(rateFor(m))} per flat)</td><td class="r">${money(sumOf(svc))}</td></tr>
+  ${['extra','garage','bike','other'].map(t=>by(t).length?`<tr><td>${TYPES[t]} (${by(t).length})</td><td class="r">${money(sumOf(by(t)))}</td></tr>`:'').join('')}
+  <tr class="tot"><td>Total collections</td><td class="r">${money(totC)}</td></tr></table>
+
+  <h4>2. Expenses</h4>
+  ${exp.length?`<table class="small"><tr><th>Date</th><th>Item</th><th class="r">Amount</th></tr>${exp.map(e=>`<tr><td>${dFmt(e.date)}</td><td>${esc(e.category)}${billTag(e)?` <span class="nt">(${esc(billTag(e))})</span>`:''}${e.note?`<span class="nt">${esc(e.note)}</span>`:''}</td><td class="r">${money(e.amount)}</td></tr>`).join('')}<tr class="tot"><td colspan="2">Total expenses (${exp.length})</td><td class="r">${money(totE)}</td></tr></table>`:'<p class="muted">No expenses this month.</p>'}
+  <p class="gen">Generated on ${dFmt(today())}</p></div>`;
+}
+
+/* ---------- settings ---------- */
+function vSet(){
+  const s=db.settings;
+  const inp=(path,val,type='text',w='')=>`<input data-set="${path}" data-type="${type==='number'?'n':'s'}" type="${type}" value="${esc(val)}" ${w?`style="width:${w}"`:''} ${type==='number'?'step="any"':''}>`;
+  return `<h2>Settings</h2><p class="sub">Changes save automatically.</p>
+  <div class="card"><h3>Building & report</h3><div class="row"><label class="grow">Building name${inp('settings.building',s.building)}</label><label class="grow">Address (optional)${inp('settings.address',s.address)}</label><label style="width:90px">Currency${inp('settings.currency',s.currency)}</label></div>
+   <div class="row" style="margin-top:10px"><label class="grow">Prepared by (signature line 1)${inp('settings.preparedBy',s.preparedBy)}</label><label class="grow">Signature line 2${inp('settings.approvedBy',s.approvedBy)}</label><label class="grow">Signature line 3${inp('settings.approvedBy2',s.approvedBy2)}</label></div></div>
+  <div class="card"><h3>Building photo</h3><p class="sub">Shown in the header and dashboard. The picture supplied with this file is only a placeholder – replace it with a photo of your building.</p><div class="row"><input type="file" id="photoFile" accept="image/*" style="width:auto"><button class="sm" data-act="photoRm">Use the default picture</button></div></div>
+  <div class="card"><h3>Accounting period & opening balance</h3><p class="sub">Accounts run from the <b>start month</b>. Enter the <b>verified closing balance on ${dFmt(lastDay(addM(s.startMonth,-1)))}</b> (general fund – from your cash count / bank statement). It becomes the opening balance of ${mLabel(s.startMonth)} and is <b>not</b> recorded as a collection. Earlier months (e.g. 2023–2025) can still be entered and reported; their balances are worked backwards from this figure.</p>
+   ${!s.balanceVerified?'<div class="note">⚠ Not confirmed yet. Type the figure, then tick “I have verified this figure”. The app does not guess it.</div>':''}
+   ${s.legacy?`<div class="note">Your earlier settings were kept for reference: start month ${esc(s.legacy.startMonth)}, opening balance ${money(s.legacy.openingBalance)}. They are no longer used.</div>`:''}
+   <div class="row"><label>Start month ${inp('settings.startMonth',s.startMonth,'month','170px')}</label><label>Verified closing balance (${dFmt(lastDay(addM(s.startMonth,-1)))})<input data-set="settings.openingBalance" data-type="n" type="number" step="any" value="${s.balanceVerified||num(s.openingBalance)?esc(s.openingBalance):''}" style="width:200px"></label><label class="chk" style="margin-top:18px"><input type="checkbox" data-setchk="settings.balanceVerified" ${s.balanceVerified?'checked':''}> I have verified this figure</label><label>Default daily pay – temporary guard ${inp('settings.dailyGuardRate',s.dailyGuardRate,'number','160px')}</label></div></div>
+  <div class="card"><div class="row"><h3 class="grow">Service charge per flat</h3><button class="sm" data-act="addRate">＋ New rate</button></div><p class="sub">Add a row when the charge changes; it applies from that month onwards.</p>
+   ${s.rates.map((r,i)=>`<div class="row" style="margin-bottom:6px"><label>Effective from ${inp(`settings.rates.${i}.from`,r.from,'month','170px')}</label><label>Amount per flat ${inp(`settings.rates.${i}.amount`,r.amount,'number','150px')}</label>${s.rates.length>1?`<button class="sm danger" data-act="rm" data-path="settings.rates" data-i="${i}">Remove</button>`:''}</div>`).join('')}</div>
+  <div class="card"><div class="row"><h3 class="grow">Flats</h3><button class="sm" data-act="addFlat">＋ Flat</button></div>
+   <div class="scroll"><table>${s.flats.map((f,i)=>`<tr><td style="width:110px">${inp(`settings.flats.${i}.id`,f.id)}</td><td>${inp(`settings.flats.${i}.owner`,f.owner)}</td><td style="width:80px"><button class="sm danger" data-act="rm" data-path="settings.flats" data-i="${i}">Remove</button></td></tr>`).join('')}</table></div>
+   <p class="sub" style="margin:6px 0 0">Column 1: flat number · Column 2: owner / resident name. If you rename a flat, past receipts keep the old name.</p></div>
+  <div class="card"><div class="row"><h3 class="grow">Garage & bike stands</h3><button class="sm" data-act="addSlot">＋ Slot</button></div>
+   <table>${s.slots.map((x,i)=>`<tr><td>${inp(`settings.slots.${i}.name`,x.name)}</td><td style="width:160px"><select data-set="settings.slots.${i}.type"><option value="garage" ${x.type==='garage'?'selected':''}>Car garage</option><option value="bike" ${x.type==='bike'?'selected':''}>Bike stand</option></select></td><td style="width:130px">${inp(`settings.slots.${i}.rate`,x.rate,'number')}</td><td style="width:80px"><button class="sm danger" data-act="rm" data-path="settings.slots" data-i="${i}">Remove</button></td></tr>`).join('')}</table></div>
+  <div class="card"><div class="row"><h3 class="grow">Monthly recurring expenses</h3><button class="sm" data-act="addRecur">＋ Item</button></div><p class="sub">These appear in “Add monthly recurring”. Staff salaries are added automatically from the Staff tab.</p>
+   <table>${s.recurring.map((r,i)=>`<tr><td>${inp(`settings.recurring.${i}.category`,r.category)}</td><td style="width:150px">${inp(`settings.recurring.${i}.amount`,r.amount,'number')}</td><td style="width:80px"><button class="sm danger" data-act="rm" data-path="settings.recurring" data-i="${i}">Remove</button></td></tr>`).join('')}</table></div>
+  <div class="card"><h3>Backup & restore</h3><p class="sub">Your data is stored in <b>this browser on this computer</b>. Download a backup regularly (and keep a copy in Google Drive / pen drive). <b>This app has no server, so it cannot sync between computers or phones.</b> To use another device, download a backup here and restore it there; edits made on two devices have to be merged by hand. Backups include everything: entries, expected expenses, reminder statuses/history, reconciliation figures and imports.</p>
+   <div class="pill-row"><button class="pri" data-act="backup">⬇ Download backup (.json)</button><button data-act="restore">⬆ Restore from backup…</button><button data-act="csv">⬇ Export all entries (CSV for Excel/Sheets)</button><button data-act="oldCopy">⬇ Pre-upgrade copy</button></div><input type="file" id="file" accept=".json" style="display:none">
+   <p class="sub" style="margin:10px 0 0">Last backup: ${db.lastBackup?new Date(db.lastBackup).toLocaleString():'never'}</p></div>
+  <div class="card"><h3>Danger zone</h3><button class="danger" data-act="reset">Erase everything and start over</button></div>`;
+}
+function setPath(path,val){const p=path.split('.');let o=db;for(let i=0;i<p.length-1;i++)o=o[p[i]];o[p[p.length-1]]=val}
+function getPath(path){return path.split('.').reduce((o,k)=>o[k],db)}
+
+/* ================= actions ================= */
+function download(name,text,type){const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([text],{type}));a.download=name;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},500)}
+const A={
+  tab:d=>{ui.tab=d.k;render();window.scrollTo(0,0)},
+  closeModal:closeModal,
+  mPrev:()=>{ui.month=addM(ui.month,-1);render()},mNext:()=>{ui.month=addM(ui.month,1);render()},mNow:()=>{ui.month=thisMonth();render()},
+  goReport:()=>{ui.tab='report';ui.month=thisMonth();render()},
+  print:()=>window.print(),
+  addExp:()=>expForm(),editExp:d=>expForm(db.expenses.find(e=>e.id===d.id)),
+  delExp:d=>{const e=db.expenses.find(x=>x.id===d.id);confirmDel('Delete this expense: '+e.category+' '+money(e.amount)+'?',()=>{db.expenses=db.expenses.filter(x=>x.id!==d.id);db.leaves.forEach(l=>{if(l.expenseId===d.id)l.expenseId=''})})},
+  recur:()=>{if(ui.tab==='dash'){ui.tab='exp';render()}recurForm()},
+  addInc:()=>incForm(),editInc:d=>incForm(db.collections.find(c=>c.id===d.id)),
+  delInc:d=>{const c=db.collections.find(x=>x.id===d.id);confirmDel('Delete this receipt: '+TYPES[c.type]+' '+money(c.amount)+'?',()=>db.collections=db.collections.filter(x=>x.id!==d.id))},
+  payFull:d=>receive(d.id,Math.max(0,rateFor(ui.month)-svcPaid(d.id,ui.month))),
+  payPart:d=>incForm(null,{from:d.id,type:'service',amount:Math.max(0,rateFor(ui.month)-svcPaid(d.id,ui.month))||''}),
+  payAll:()=>{const m=ui.month,r=rateFor(m),un=db.settings.flats.filter(f=>svcPaid(f.id,m)<r);if(!un.length)return toast('All flats already paid');
+    if(!confirm('Record '+un.length+' flat(s) as paid in full for '+mLabel(m)+' (dated '+dFmt(defaultDate(m))+')?'))return;
+    un.forEach(f=>db.collections.push({id:uid(),date:defaultDate(m),type:'service',from:f.id,amount:r-svcPaid(f.id,m),note:'',forMonth:m,fundId:''}));save();render();toast(un.length+' receipts added')},
+  addStaff:()=>staffForm(),editStaff:d=>staffForm(db.staff.find(s=>s.id===d.id)),
+  addLeave:d=>leaveForm(null,d.id),editLeave:d=>leaveForm(db.leaves.find(l=>l.id===d.id)),
+  delLeave:d=>{const l=db.leaves.find(x=>x.id===d.id);confirmDel('Delete this leave record?',()=>{db.leaves=db.leaves.filter(x=>x.id!==d.id)})},
+  addFund:()=>fundForm(),editFund:d=>fundForm(db.funds.find(f=>f.id===d.id)),
+  toggleFund:d=>{const f=db.funds.find(x=>x.id===d.id);f.closed=!f.closed;save();render()},
+  delFund:d=>{const f=db.funds.find(x=>x.id===d.id);const n=db.collections.filter(c=>c.fundId===f.id).length+db.expenses.filter(e=>e.fundId===f.id).length;
+    if(n)return alert('This fund has '+n+' receipts/expenses. Delete those first (or just close the fund).');confirmDel('Delete fund '+f.name+'?',()=>db.funds=db.funds.filter(x=>x.id!==f.id))},
+  fundSpend:d=>expForm(null,{fundId:d.id}),
+  fundPay:d=>{db.collections.push({id:uid(),date:defaultDate(ui.month),type:'special',from:d.flat,amount:num(d.amt),note:'',forMonth:'',fundId:d.id});save();render();toast('Received '+cur(d.amt)+' from '+d.flat)},
+  fundPayOther:d=>incForm(null,{type:'special',fundId:d.id,from:d.flat}),
+  rm:d=>{const arr=getPath(d.path);if(confirm('Remove this row?')){arr.splice(+d.i,1);save();render()}},
+  addRate:()=>{db.settings.rates.push({from:thisMonth(),amount:db.settings.rates.length?rateFor(thisMonth()):5000});save();render()},
+  addFlat:()=>{db.settings.flats.push({id:'',owner:''});save();render()},
+  addSlot:()=>{db.settings.slots.push({id:uid(),name:'',type:'bike',rate:500});save();render()},
+  addRecur:()=>{db.settings.recurring.push({id:uid(),category:'',amount:0});save();render()},
+  backup:e=>{db.lastBackup=Date.now();save();download('shantir-neer-backup-'+today()+'.json',JSON.stringify(db,null,1),'application/json');toast('Backup downloaded');setTimeout(render,100)},
+  restore:()=>$('#file').click(),
+  csv:()=>{const q=v=>'"'+String(v??'').replace(/"/g,'""')+'"';const rows=[['Date','Direction','Type/Category','From/Note','For month / fund','Amount']];
+    db.collections.forEach(c=>rows.push([c.date,'Received',TYPES[c.type],(c.from||'')+(c.note?' | '+c.note:''),c.type==='service'?fm(c):(db.funds.find(f=>f.id===c.fundId)||{}).name||'',c.amount]));
+    db.expenses.forEach(e=>rows.push([e.date,'Paid',e.category,[billTag(e),e.note].filter(Boolean).join(' – '),e.fundId?(db.funds.find(f=>f.id===e.fundId)||{}).name:'General',e.amount]));
+    rows.sort((a,b)=>a[0]<b[0]?-1:1);download('shantir-neer-entries-'+today()+'.csv','﻿'+rows.map(r=>r.map(q).join(',')).join('\n'),'text/csv')},
+  reset:()=>{if(confirm('Erase ALL data in this browser? This cannot be undone.')&&prompt('Type ERASE to confirm')==='ERASE'){db=defaults();save();render();toast('All data erased')}}
+};
+/* ================= v2 additions: balances, reminders, import ================= */
+const FREQ={daily:'Daily',weekly:'Weekly',monthly:'Monthly',quarterly:'Quarterly',yearly:'Yearly',custom:'Custom date'};
+const WD=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+const MON=['January','February','March','April','May','June','July','August','September','October','November','December'];
+const ST={pending:['Pending entry','a'],entered:['Entered','g'],paid:['Paid – not yet entered','a'],na:['Not incurred / N/A',''],deferred:['Deferred','']};
+const addDays=(d,k)=>{const x=new Date(toU(d)+k*864e5);return x.getUTCFullYear()+'-'+pad(x.getUTCMonth()+1)+'-'+pad(x.getUTCDate())};
+const hasNum=v=>v!==null&&v!==undefined&&v!==''&&!isNaN(Number(v));
+
+/* ---------- balances ---------- */
+function netGen(from,to){let n=0;
+  db.collections.forEach(c=>{const k=mOf(c.date);if(k>=from&&k<=to)n+=num(c.amount)});
+  db.expenses.forEach(e=>{const k=mOf(e.date);if(k>=from&&k<=to)n-=num(e.amount)});
+  return n}
+const closingGeneral=m=>openingGeneral(m)+netGen(m,m);
+function monthTotals(m){
+  const open=openingGeneral(m),exp=sumOf(db.expenses.filter(e=>mOf(e.date)===m)),col=netGen(m,m)+exp;
+  const close=open+col-exp,spClose=sumOf(db.funds.filter(f=>mOf(f.date)<=m),f=>fundStat(f,m).bal);
+  const rc=db.recon[m]||{},has=hasNum(rc.actual),calc=close;
+  return{open,col,exp,close,spClose,has,actual:has?num(rc.actual):null,calc,diff:has?num(rc.actual)-calc:null,incSpecial:rc.incSpecial!==false}}
+
+/* ---------- year summary ---------- */
+function yearHTML(y){
+  const s=db.settings;let rows='',tc=0,te=0;const cats={};
+  for(let i=1;i<=12;i++){const m=y+'-'+pad(i),o=openingGeneral(m),c=sumOf(db.collections.filter(x=>mOf(x.date)===m)),ex=db.expenses.filter(x=>mOf(x.date)===m),e=sumOf(ex);
+    tc+=c;te+=e;ex.forEach(x=>cats[x.category]=(cats[x.category]||0)+num(x.amount));
+    rows+=`<tr><td>${mLabel(m)}</td><td class="r">${money(o)}</td><td class="r">${money(c)}</td><td class="r">${money(e)}</td><td class="r">${money(o+c-e)}</td></tr>`}
+  const cr=Object.entries(cats).sort((a,b)=>b[1]-a[1]);
+  return `<div class="report">${rptHead('<b>Yearly Accounts Summary – '+y+'</b>')}<p class="muted" style="text-align:center;margin:4px 0">Includes special fund collections and spending</p>
+  ${y+'-12'<s.startMonth?`<p class="muted"><i>Historical year: balances are worked backwards from the verified closing balance before ${mLabel(s.startMonth)} and are only reliable if every entry from ${y} onwards has been recorded.</i></p>`:''}
+  <h4>Month by month</h4><table><tr><th>Month</th><th class="r">Opening</th><th class="r">Collections</th><th class="r">Expenses</th><th class="r">Closing</th></tr>${rows}<tr class="tot"><td>Year total</td><td class="r"></td><td class="r">${money(tc)}</td><td class="r">${money(te)}</td><td class="r"></td></tr></table>
+  <h4>Expenses by category</h4>${cr.length?`<table><tr><th>Category</th><th class="r">Amount</th></tr>${cr.map(([k,v])=>`<tr><td>${esc(k)}</td><td class="r">${money(v)}</td></tr>`).join('')}<tr class="tot"><td>Total</td><td class="r">${money(te)}</td></tr></table>`:'<p class="muted">No expenses recorded.</p>'}
+  <p class="gen">Generated on ${dFmt(today())}</p></div>`}
+function vYear(){const y=ui.ry,s=new Set([2022,2023,2024,2025,2026,new Date().getFullYear()+1,y]);
+  [...db.collections,...db.expenses].forEach(x=>s.add(+x.date.slice(0,4)));
+  return `<div class="row no-print"><div class="grow"><h2>Yearly Summary</h2><p class="sub">Any past year can be reported once its entries are recorded.</p></div><label style="width:110px">Year<select data-chg="rySet">${[...s].filter(v=>v>1999).sort().map(v=>`<option ${v===y?'selected':''}>${v}</option>`).join('')}</select></label><button data-act="yrToggle">‹ Monthly report</button><button class="pri" data-act="print">🖨 Print / Save as PDF</button></div>${yearHTML(y)}`}
+
+/* ---------- backup / restore validation ---------- */
+function validateBackup(d){
+  const e=[];
+  if(!d||typeof d!=='object'||Array.isArray(d))return['The file is not a Shantir Neer backup (expected a JSON object).'];
+  if(!d.settings||typeof d.settings!=='object')e.push('Missing "settings".');
+  if(!Array.isArray(d.collections))e.push('Missing list of collections.');
+  if(!Array.isArray(d.expenses))e.push('Missing list of expenses.');
+  if((d.v||1)>DBV)e.push('This backup comes from a newer version of the app (v'+d.v+'). Open it in the newer file.');
+  [['collections','receipt'],['expenses','expense']].forEach(([k,n])=>{if(Array.isArray(d[k])){let bad=0;d[k].forEach((x,i)=>{if(!x||!/^\d{4}-\d{2}-\d{2}$/.test(x.date||'')||!isFinite(Number(x.amount))){bad++;if(bad<=3)e.push('The '+n+' #'+(i+1)+' has a missing/invalid date or amount.')}});if(bad>3)e.push((bad-3)+' more invalid '+n+'s.')}});
+  ['staff','leaves','funds','expected','remLog','imports'].forEach(k=>{if(d[k]!==undefined&&!Array.isArray(d[k]))e.push('"'+k+'" should be a list.')});
+  return e}
+function doRestore(file){
+  const r=new FileReader();
+  r.onerror=()=>alert('The file could not be read.');
+  r.onload=()=>{let d;try{d=JSON.parse(r.result)}catch(x){return alert('Restore cancelled – this is not valid JSON ('+x.message+'). Your current data was not changed.')}
+    const err=validateBackup(d);if(err.length)return alert('Restore cancelled – the backup has problems:\n\n• '+err.join('\n• ')+'\n\nYour current data was not changed.');
+    const n=d.collections.length+d.expenses.length;
+    if(!confirm('This backup has '+d.collections.length+' receipts and '+d.expenses.length+' expenses (saved '+(d.lastBackup?new Date(d.lastBackup).toLocaleDateString():'date unknown')+').\n\nReplace ALL current data with it? A safety copy of the current data is kept in this browser first.'))return;
+    try{localStorage.setItem(KEY+'_prerestore',JSON.stringify(db))}catch(x){if(!confirm('A safety copy of the current data could not be stored. Continue anyway?'))return}
+    db=migrate(d);save();render();toast('Backup restored ('+n+' entries)')};
+  r.readAsText(file)}
+
+/* ---------- checklist ---------- */
+function occurrences(m){
+  const out=[],last=+lastDay(m).slice(8),mm=+m.slice(5);
+  db.expected.filter(x=>x.active&&(x.from||db.settings.startMonth)<=m).forEach(x=>{
+    const push=d=>out.push({x,key:x.id+'|'+d,due:d,amount:x.amount}),dd=Math.min(Math.max(+x.dueDay||1,1),last);
+    if(x.freq==='monthly')push(m+'-'+pad(dd));
+    else if(x.freq==='quarterly'){if(((mm-(+x.dueMonth||1))%3+3)%3===0)push(m+'-'+pad(dd))}
+    else if(x.freq==='yearly'){if(mm===(+x.dueMonth||1))push(m+'-'+pad(dd))}
+    else if(x.freq==='custom'){if(x.dueDate&&mOf(x.dueDate)===m)push(x.dueDate)}
+    else if(x.freq==='weekly'){for(let d=1;d<=last;d++)if(new Date(+m.slice(0,4),mm-1,d).getDay()===(+x.weekday||0))push(m+'-'+pad(d))}
+    else if(x.freq==='daily')push(lastDay(m));
+  });
+  return out.sort((a,b)=>a.due<b.due?-1:a.due>b.due?1:0)}
+function occByKey(key){const [id,d]=key.split('|'),x=db.expected.find(z=>z.id===id);return x?{x,key,due:d,amount:x.amount}:null}
+function chkState(o){
+  const c=db.checks[o.key]||{status:'pending'};let st=c.status||'pending',missing=false;
+  if(st==='entered'&&!db.expenses.some(e=>e.id===c.expenseId)){st='pending';missing=true}
+  const eff=st==='deferred'&&c.deferTo?c.deferTo:o.due,open=st==='pending'||st==='paid'||st==='deferred';
+  return{c,st,missing,open,eff,overdue:open&&eff<today()}}
+const linkedIds=ex=>new Set(Object.entries(db.checks).filter(([k,c])=>c.status==='entered'&&k!==ex&&c.expenseId).map(([k,c])=>c.expenseId));
+function logRem(rid,label,action){db.remLog.unshift({id:uid(),ts:Date.now(),rid,label,action});if(db.remLog.length>500)db.remLog.length=500}
+function linkCheck(key,expId,note){db.checks[key]={status:'entered',expenseId:expId,note:note||'',ts:Date.now()};const o=occByKey(key);logRem('chk:'+key,o?o.x.name:key,'completed – entered')}
+function setCheck(key,rec,action){const o=occByKey(key);db.checks[key]=Object.assign({ts:Date.now()},rec);logRem('chk:'+key,o?o.x.name:key,action)}
+function markDlg(key){
+  const o=occByKey(key);if(!o)return;const m=mOf(o.due),used=linkedIds(key);
+  const cands=db.expenses.filter(e=>!used.has(e.id)&&mOf(e.date)>=addM(m,-1)&&mOf(e.date)<=addM(m,1)).sort((a,b)=>(b.category===o.x.category)-(a.category===o.x.category)||(a.date<b.date?-1:1));
+  modal('Mark as entered – '+esc(o.x.name),
+   `<p class="sub full" style="margin:0">Pick the expense you have <b>already recorded</b>. Expenses linked to another checklist item are hidden, so nothing is counted twice. A reminder never creates an expense by itself.</p>`+
+   F.sel('expenseId','Recorded expense',[['','— choose —'],...cands.map(e=>[e.id,dFmt(e.date)+' · '+e.category+' · '+money(e.amount)+(e.note?' · '+e.note.slice(0,30):'')])],'','','full')+
+   `<div class="full"><button type="button" data-act="chkCreate" data-key="${esc(key)}">＋ Not recorded yet – add the expense now</button></div>`,
+   d=>{if(!d.expenseId){alert('Choose the recorded expense, or add it first.');return false}
+     if(linkedIds(key).has(d.expenseId)){alert('That expense is already linked to another checklist item.');return false}
+     linkCheck(key,d.expenseId);toast('Marked as entered')},{save:'Link & mark entered'})}
+function paidDlg(key){const o=occByKey(key),c=db.checks[key]||{};
+  modal('Paid but not yet entered – '+esc(o.x.name),F.date('paidDate','Date paid',c.paidDate||today(),'required')+F.num('paidAmt','Amount paid',c.paidAmt||o.amount||'')+F.text('note','Note (who was paid?)',c.note||'','','full'),
+   d=>{setCheck(key,{status:'paid',paidDate:d.paidDate,paidAmt:num(d.paidAmt),note:d.note},'paid – entry pending')})}
+function naDlg(key){const o=occByKey(key);modal('Not incurred / not applicable – '+esc(o.x.name),F.text('note','Reason (optional)','','','full'),d=>{setCheck(key,{status:'na',note:d.note},'marked not applicable')})}
+function deferDlg(key){const o=occByKey(key);modal('Defer – '+esc(o.x.name),F.date('deferTo','Remind me again on',addDays(today(),7),'required')+F.text('note','Reason','','','full'),d=>{setCheck(key,{status:'deferred',deferTo:d.deferTo,note:d.note},'deferred to '+dFmt(d.deferTo))})}
+function snoozeDlg(id,label){modal('Snooze reminder',F.sel('w','Remind me again',[['1','in 1 hour'],['3','in 3 hours'],['t','tomorrow morning']],'1','','full'),d=>{
+  const n=new Date();let at=d.w==='t'?new Date(n.getFullYear(),n.getMonth(),n.getDate()+1,8,0).getTime():Date.now()+(+d.w)*36e5;
+  db.snooze[id]=at;logRem(id,label,'snoozed')})}
+
+/* ---------- reminders ---------- */
+function pendingReminders(){
+  const R=db.rem,t=today(),now=Date.now(),L=[],tf=R.trackFrom||t,hid=id=>!!((db.snooze[id]&&db.snooze[id]>now)||db.dismissed[id]),cm=thisMonth();
+  for(let m=mOf(tf);m<=cm;m=addM(m,1))occurrences(m).forEach(o=>{if(o.due<tf)return;const s=chkState(o);if(s.overdue){const id='chk:'+o.key;L.push({id,kind:'chk',key:o.key,label:o.x.name+(s.st==='paid'?' (paid – entry pending)':s.st==='deferred'?' (deferred)':''),due:s.eff,hidden:hid(id)})}});
+  if(R.dailyOn){const n=new Date(),hm=pad(n.getHours())+':'+pad(n.getMinutes());
+    for(let i=0;i<=7;i++){const d=addDays(t,-i);if(d<tf||db.dailyLog[d])continue;if(i===0&&hm<R.dailyTime)continue;const id='day:'+d;L.push({id,kind:'day',date:d,label:'Record expenses paid on '+dFmt(d)+' – or confirm there were none',due:d,hidden:hid(id)})}}
+  [addM(cm,-1),cm].forEach(m=>{if(m<mOf(tf)||m<db.settings.startMonth||db.monthReview[m])return;
+    const due=m===cm?m+'-'+pad(Math.min(+R.reviewDay||25,+lastDay(m).slice(8))):lastDay(m);if(t<due)return;
+    const id='mrev:'+m;L.push({id,kind:'mrev',m,label:'Review expected expenses before closing '+mLabel(m),due,hidden:hid(id)})});
+  return L.sort((a,b)=>a.due<b.due?-1:1)}
+const navHTML=()=>{const n=pendingReminders().filter(r=>!r.hidden).length;return TABS.map(([k,l])=>`<button data-act="tab" data-k="${k}" class="${ui.tab===k?'on':''}">${l}${k==='rem'&&n?`<span class="bdg">${n}</span>`:''}</button>`).join('')};
+function remActions(r){
+  const sn=`<button class="sm" data-act="rmSnooze" data-id="${esc(r.id)}">Snooze</button> <button class="sm" data-act="rmDismiss" data-id="${esc(r.id)}">Dismiss</button>`;
+  if(r.kind==='chk')return `<button class="sm pri" data-act="rmDone" data-id="${esc(r.id)}">Complete</button> <button class="sm" data-act="rmNA" data-id="${esc(r.id)}">Not applicable</button> `+sn;
+  if(r.kind==='day')return `<button class="sm" data-act="dayAdd" data-d="${r.date}">＋ Add expense</button> <button class="sm pri" data-act="dayDone" data-id="${esc(r.id)}">All recorded</button> <button class="sm" data-act="dayNone" data-id="${esc(r.id)}">None paid</button> `+sn;
+  return `<button class="sm pri" data-act="goRev" data-m="${r.m}">Open review</button> `+sn}
+function remSummary(){
+  const all=pendingReminders(),v=all.filter(r=>!r.hidden),od=v.filter(r=>r.kind==='chk').length;
+  return `<div class="card"><div class="row"><h3 class="grow" style="margin:0">🔔 Reminders <span class="tag ${v.length?'r':'g'}">${v.length?v.length+' pending':'all clear'}</span></h3><button class="sm pri" data-act="goRem">Open checklist</button></div>
+  <div class="sub" style="margin:6px 0 0">${v.length?`${od} overdue checklist item(s) · ${v.filter(r=>r.kind==='day').length} daily confirmation(s) · ${v.filter(r=>r.kind==='mrev').length} month review(s)`:'Nothing is waiting.'}${all.length>v.length?` · ${all.length-v.length} snoozed/dismissed`:''}</div></div>`}
+function monthFlags(m){
+  const f=[];let p=0,pd=0,df=0,mis=0;
+  occurrences(m).forEach(o=>{const s=chkState(o);if(s.missing)mis++;if(s.st==='pending')p++;else if(s.st==='paid')pd++;else if(s.st==='deferred')df++});
+  if(p)f.push(p+' expected expense(s) still pending entry'+(mis?' ('+mis+' with a linked expense that no longer exists)':''));
+  if(pd)f.push(pd+' payment(s) made but not yet entered');if(df)f.push(df+' deferred item(s)');
+  const T=monthTotals(m);
+  if(!T.has)f.push('Actual cash/bank balance not entered (Monthly Report tab)');else if(Math.abs(T.diff)>0.004)f.push('Actual balance differs from calculated balance by '+money(T.diff));
+  if(!db.settings.balanceVerified)f.push('The verified opening balance is not confirmed in Settings');
+  if(db.rem.dailyOn){const tf=db.rem.trackFrom||today();let n=0;for(let d=m+'-01';d<=lastDay(m)&&d<=today();d=addDays(d,1)){if(d>=tf&&!db.dailyLog[d]&&!db.expenses.some(e=>e.date===d))n++}if(n)f.push(n+' day(s) with no expense and no “none paid” confirmation')}
+  return f}
+
+function vRem(){
+  const m=ui.month,R=db.rem,occ=occurrences(m),all=pendingReminders(),vis=all.filter(r=>!r.hidden),np='Notification' in window?Notification.permission:'unsupported';
+  const flags=monthFlags(m),rev=db.monthReview[m];
+  const cnt={pending:0,entered:0,paid:0,na:0,deferred:0};occ.forEach(o=>cnt[chkState(o).st]++);
+  const inp=(p,v,t,w)=>`<input data-set="${p}" data-type="${t==='number'?'n':'s'}" type="${t}" value="${esc(v)}" style="width:${w}">`;
+  return `<div class="row"><div class="grow"><h2>Common Expenses & Reminders</h2><p class="sub">A checklist of expenses you expect. A checklist item is <b>not</b> an expense – nothing is added to the accounts until you record a real expense.</p></div>${mpick()}</div>
+  <div class="card"><h3>Needs attention ${vis.length?`<span class="tag r">${vis.length}</span>`:''}</h3>
+  ${vis.length?`<div class="scroll"><table><tr><th>Type</th><th>What</th><th>Due</th><th></th></tr>${vis.map(r=>`<tr><td><span class="tag ${r.kind==='chk'?'r':'a'}">${r.kind==='chk'?'Overdue':r.kind==='day'?'Daily':'Month review'}</span></td><td>${esc(r.label)}</td><td>${dFmt(r.due)}</td><td class="r" style="white-space:normal">${remActions(r)}</td></tr>`).join('')}</table></div>`:'<div class="empty">No pending reminders. 🎉</div>'}
+  ${all.length>vis.length?`<p class="sub" style="margin:6px 0 0">${all.length-vis.length} reminder(s) are snoozed or dismissed. Overdue checklist items stay visible in the checklist below.</p>`:''}</div>
+
+  <div class="card"><div class="row"><h3 class="grow" style="margin:0">Checklist – ${mLabel(m)}</h3><button class="sm" data-act="expAdd">＋ Expected expense</button></div>
+  <p class="sub" style="margin:4px 0 8px">${cnt.entered} entered · ${cnt.pending} pending · ${cnt.paid} paid-not-entered · ${cnt.deferred} deferred · ${cnt.na} not applicable</p>
+  ${occ.length?`<div class="scroll"><table><tr><th>Due</th><th>Item</th><th>Category</th><th class="r">Expected</th><th>Status</th><th>Details</th><th></th></tr>${occ.map(o=>{const s=chkState(o),c=s.c,e=db.expenses.find(x=>x.id===c.expenseId),k=esc(o.key);
+    const det=s.st==='entered'?(e?dFmt(e.date)+' · '+money(e.amount)+(e.fundId?' (special fund)':''):''):s.missing?'<span class="neg">linked expense was deleted</span>':s.st==='paid'?'Paid '+dFmt(c.paidDate)+(c.paidAmt?' · '+money(c.paidAmt):''):s.st==='deferred'?'until '+dFmt(c.deferTo):'';
+    const b=(a,t,cl='')=>`<button class="sm ${cl}" data-act="${a}" data-key="${k}">${t}</button> `;
+    const btn=s.st==='entered'?b('chkReopen','Reopen'):s.st==='paid'?b('chkEnter','Mark entered','pri')+b('chkReopen','Reopen'):s.st==='na'?b('chkReopen','Reopen'):b('chkEnter','Mark entered','pri')+b('chkPaid','Paid, not entered')+b('chkNA','N/A')+(s.st==='deferred'?b('chkReopen','Reopen'):b('chkDefer','Defer'));
+    return `<tr><td>${dFmt(o.due)}</td><td><b>${esc(o.x.name)}</b>${o.x.person?`<br><span class="sub">${esc(o.x.person)}</span>`:''}${o.x.freq==='daily'?'<br><span class="sub">daily item – confirm for the month</span>':''}</td><td>${esc(o.x.category)}</td><td class="r">${o.amount?money(o.amount):'–'}</td><td><span class="tag ${ST[s.st][1]}">${ST[s.st][0]}</span>${s.overdue?' <span class="tag r">overdue</span>':''}</td><td>${det}${c.note?`<br><span class="sub">${esc(c.note)}</span>`:''}</td><td class="r" style="white-space:normal">${btn}</td></tr>`}).join('')}</table></div>`:'<div class="empty">No active expected expenses fall in this month. Add or switch on items in the list further down.</div>'}</div>
+
+  <div class="card"><h3>Month-end review – ${mLabel(m)} ${rev?'<span class="tag g">reviewed '+new Date(rev.ts).toLocaleDateString()+'</span>':''}</h3>
+  ${flags.length?`<div class="note"><b>Still open:</b><br>${flags.map(x=>'• '+esc(x)).join('<br>')}</div>`:'<p class="sub">✔ Nothing is flagged for this month.</p>'}
+  <div class="pill-row">${rev?`<button data-act="revReopen" data-m="${m}">Reopen review</button>`:`<button class="pri" data-act="revDone" data-m="${m}">Mark month as reviewed</button>`}<button data-act="goReport">Open monthly report</button></div></div>
+
+  <div class="card"><div class="row"><h3 class="grow" style="margin:0">Expected expenses (set up once)</h3><button class="sm pri" data-act="expAdd">＋ Add</button></div>
+  <p class="sub" style="margin:4px 0 8px">Examples are switched <b>off</b> – turn on only what applies to your building and edit amounts/dates. Weekly items appear on each matching weekday; daily items appear once a month (daily payments are covered by the daily prompt).</p>
+  ${db.expected.length?`<div class="scroll"><table><tr><th>On</th><th>Name</th><th>Category</th><th>Frequency</th><th>When</th><th class="r">Amount</th><th>Person</th><th></th></tr>${db.expected.map(x=>`<tr style="${x.active?'':'opacity:.6'}"><td><input type="checkbox" style="width:auto" data-act="expToggle" data-id="${x.id}" ${x.active?'checked':''}></td><td><b>${esc(x.name)}</b>${x.notes?`<br><span class="sub">${esc(x.notes)}</span>`:''}</td><td>${esc(x.category)}</td><td>${FREQ[x.freq]}</td><td>${x.freq==='weekly'?WD[+x.weekday||0]:x.freq==='custom'?dFmt(x.dueDate):x.freq==='daily'?'every day':(x.freq!=='monthly'?MON[(+x.dueMonth||1)-1]+' ':'')+'day '+x.dueDay}</td><td class="r">${x.amount?money(x.amount):'–'}</td><td>${esc(x.person||'')}</td><td class="r"><button class="sm" data-act="expEdit" data-id="${x.id}">Edit</button> <button class="sm danger" data-act="expDel" data-id="${x.id}">Delete</button></td></tr>`).join('')}</table></div>`:'<div class="empty">None yet.</div>'}</div>
+
+  <div class="card"><h3>Reminder settings</h3>
+  <div class="row"><label class="chk"><input type="checkbox" data-setchk="rem.dailyOn" ${R.dailyOn?'checked':''}> Daily expense prompt</label><label>Daily reminder time ${inp('rem.dailyTime',R.dailyTime,'time','140px')}</label><label>Monthly review reminder from day ${inp('rem.reviewDay',R.reviewDay,'number','110px')}</label><label>Track reminders from ${inp('rem.trackFrom',R.trackFrom,'date','170px')}</label></div>
+  <p class="sub" style="margin:8px 0">“Track reminders from” keeps old months from flooding you with overdue items; set an earlier date if you want them.</p>
+  <div class="row"><b>Browser notifications:</b> <span class="tag ${np==='granted'&&R.notify?'g':'a'}">${np==='unsupported'?'not supported here':np==='granted'?(R.notify?'on':'allowed, switched off'):np==='denied'?'blocked in browser settings':'not enabled'}</span>
+  ${np!=='unsupported'?`<button class="sm" data-act="notifOn">Enable…</button><button class="sm" data-act="notifOff">Switch off</button><button class="sm" data-act="notifTest">Send test</button>`:''}</div>
+  <div class="note" style="margin-top:10px">ℹ This is an ordinary local HTML file. Notifications and reminders only work <b>while this page is open in the browser</b> (a tab can stay open in the background). Nothing can be sent when the browser is closed, the computer is off or sleeping. Reminders show again every time you open the app, so nothing is lost.</div></div>
+
+  <div class="card"><h3>Reminder history</h3>${db.remLog.length?`<div class="scroll"><table><tr><th>When</th><th>Item</th><th>Action</th><th>Now</th></tr>${db.remLog.slice(0,40).map(h=>{let now='';if(h.rid.startsWith('chk:')){const o=occByKey(h.rid.slice(4));now=o?(()=>{const s=chkState(o);return ST[s.st][0]+(s.overdue?' (still overdue)':'')})():'item deleted'}else if(h.rid.startsWith('day:'))now=db.dailyLog[h.rid.slice(4)]?'resolved':'still open';else if(h.rid.startsWith('mrev:'))now=db.monthReview[h.rid.slice(5)]?'reviewed':'not reviewed';return `<tr><td>${new Date(h.ts).toLocaleString()}</td><td>${esc(h.label)}</td><td>${esc(h.action)}</td><td>${now}</td></tr>`}).join('')}</table></div>`:'<div class="empty">Nothing yet. Actions on reminders are logged here.</div>'}</div>`}
+
+function expectedForm(x){
+  const edit=!!x;x=x||{name:'',category:'',freq:'monthly',dueDay:1,dueMonth:1,weekday:1,dueDate:'',amount:'',person:'',active:true,notes:'',from:db.settings.startMonth};
+  modal(edit?'Edit expected expense':'Add expected expense',
+   F.text('name','Expense name',x.name,'required','full')+F.text('category','Category (used in reports)',x.category,'list="cats" autocomplete="off"')+dl()+
+   F.sel('freq','Expected frequency',Object.entries(FREQ),x.freq)+
+   F.sel('weekday','Weekday',WD.map((w,i)=>[i,w]),x.weekday,'','cond" data-for="weekly')+
+   F.num('dueDay','Due day of month (1–31)',x.dueDay,'','cond" data-for="monthly quarterly yearly')+
+   F.sel('dueMonth','Month (quarterly: first month of the cycle)',MON.map((w,i)=>[i+1,w]),x.dueMonth,'','cond" data-for="quarterly yearly')+
+   F.date('dueDate','Due date',x.dueDate,'','cond" data-for="custom')+
+   F.num('amount','Expected amount (blank if unknown)',x.amount)+F.text('person','Responsible person',x.person)+F.month('from','Applies from month',x.from)+
+   F.chk('active','Active (show in checklist and reminders)',x.active,'full')+F.area('notes','Notes',x.notes,'','full'),
+   d=>{const dd=num(d.dueDay);
+    if(['monthly','quarterly','yearly'].includes(d.freq)&&(dd<1||dd>31)){alert('Due day must be between 1 and 31.');return false}
+    if(d.freq==='custom'&&!d.dueDate){alert('Choose the due date.');return false}
+    const r={name:d.name.trim(),category:(d.category||d.name).trim(),freq:d.freq,weekday:+d.weekday,dueDay:dd||1,dueMonth:+d.dueMonth||1,dueDate:d.dueDate,amount:num(d.amount)||'',person:d.person.trim(),from:d.from||db.settings.startMonth,active:d.active,notes:d.notes.trim()};
+    if(!r.name)return false;if(edit)Object.assign(x,r);else db.expected.push(Object.assign({id:uid()},r));toast('Saved')},
+   {init:f=>{const t=f.querySelector('[name=freq]'),u=()=>f.querySelectorAll('.cond').forEach(e=>e.style.display=e.dataset.for.split(' ').includes(t.value)?'':'none');t.onchange=u;u()}})}
+
+function showReminderPopup(){
+  if($('#modal').innerHTML)return;
+  const v=pendingReminders().filter(r=>!r.hidden),mo=thisMonth(),open=occurrences(mo).filter(o=>{const s=chkState(o);return s.open&&!s.overdue}).length;
+  if(!v.length&&!open)return;
+  $('#modal').innerHTML=`<div class="ov"><div class="dlg wide"><h3>🔔 Expense reminders</h3>${v.length?`<p class="sub">These need attention:</p><div class="scroll"><table>${v.slice(0,12).map(r=>`<tr><td><span class="tag ${r.kind==='chk'?'r':'a'}">${r.kind==='chk'?'Overdue':r.kind==='day'?'Daily':'Review'}</span></td><td>${esc(r.label)}</td><td>${dFmt(r.due)}</td></tr>`).join('')}</table></div>${v.length>12?`<p class="sub">…and ${v.length-12} more.</p>`:''}`:''}${open?`<p class="sub">${open} expected expense(s) for ${mLabel(mo)} are still unfinished (not yet due).</p>`:''}<div class="btns" style="margin-top:14px"><button data-act="closeModal">Later</button><button class="pri" data-act="goRem">Open checklist</button></div></div></div>`}
+let lastCount=-1;
+function startReminders(){
+  const tick=()=>{const v=pendingReminders().filter(r=>!r.hidden),n=v.length;$('#nav').innerHTML=navHTML();
+    if(lastCount>=0&&n>lastCount)toast('🔔 '+n+' reminder(s) pending');lastCount=n;
+    if(n&&db.rem.notify&&'Notification' in window&&Notification.permission==='granted'&&db.rem.lastNotifyDay!==today()){db.rem.lastNotifyDay=today();save();try{new Notification(db.settings.building+' – expense reminder',{body:n+' item(s) need attention. Record today\'s expenses or confirm there were none.'})}catch(e){}}};
+  setInterval(tick,60000);tick();setTimeout(showReminderPopup,400)}
+
+/* ---------- import ---------- */
+const IMPF=[['date','Date *'],['amount','Amount (single column)'],['debit','Paid / Debit amount'],['credit','Received / Credit amount'],['dir','Type column (Received / Paid)'],['cat','Category / item / type of receipt'],['from','Flat no. / paid by / paid to'],['note','Note / remarks'],['forMonth','Service charge for month']];
+const bnDigits=s=>String(s).replace(/[০-৯]/g,c=>'০১২৩৪৫৬৭৮৯'.indexOf(c));
+function parseDate(v){
+  if(typeof v==='number'&&v>20000&&v<80000){const d=new Date(Date.UTC(1899,11,30)+v*864e5);return chkD(d.getUTCFullYear(),d.getUTCMonth()+1,d.getUTCDate(),v)}
+  const s=bnDigits(String(v??'').trim());if(!s)return{ok:false,err:'is empty – every row needs a date'};
+  let m;
+  if(m=s.match(/^(\d{4})[-\/.](\d{1,2})[-\/.](\d{1,2})/))return chkD(+m[1],+m[2],+m[3],s);
+  if(m=s.match(/^(\d{1,2})[-\/.](\d{1,2})[-\/.](\d{2,4})$/))return chkD(+m[3]<100?2000+ +m[3]:+m[3],+m[2],+m[1],s);
+  if(m=s.match(/^(\d{1,2})[ -]([A-Za-z]{3,9})[ ,.-]+(\d{4})$/)){const i=MON.findIndex(x=>x.slice(0,3).toLowerCase()===m[2].slice(0,3).toLowerCase());if(i>=0)return chkD(+m[3],i+1,+m[1],s)}
+  return{ok:false,err:'“'+s+'” is not a recognised date – use DD/MM/YYYY or YYYY-MM-DD'}}
+function chkD(y,m,d,raw){const t=new Date(Date.UTC(y,m-1,d));if(y<2000||y>2100||t.getUTCMonth()!==m-1||t.getUTCDate()!==d)return{ok:false,err:'“'+raw+'” is not a real calendar date (dates are read as DD/MM/YYYY)'};return{ok:true,iso:y+'-'+pad(m)+'-'+pad(d)}}
+function parseAmt(v){if(typeof v==='number')return v;let s=bnDigits(String(v??'')).trim();if(!s)return null;let neg=/^\(.*\)$/.test(s)||/^-/.test(s);s=s.replace(/[()৳,\s]|tk\.?|bdt|taka/gi,'').replace(/^-/,'');if(!/^\d*\.?\d+$/.test(s))return NaN;return neg?-Number(s):Number(s)}
+function parseDir(v){const s=String(v??'').trim().toLowerCase();if(['received','receive','in','credit','cr','income','collection','r','c'].includes(s))return'c';if(['paid','pay','out','debit','dr','expense','payment','e','p','d'].includes(s))return'e';return null}
+const dupKey=(d,t,a,w)=>d+'|'+t+'|'+num(a).toFixed(2)+'|'+String(w||'').trim().toLowerCase();
+function parseCSV(txt){
+  txt=txt.replace(/^\uFEFF/,'');const first=txt.split(/\r?\n/)[0]||'',sep=[',',';','\t'].map(c=>[c,first.split(c).length]).sort((a,b)=>b[1]-a[1])[0][0];
+  const rows=[];let r=[],f='',q=false;
+  for(let i=0;i<txt.length;i++){const c=txt[i];
+    if(q){if(c==='"'){if(txt[i+1]==='"'){f+='"';i++}else q=false}else f+=c}
+    else if(c==='"')q=true;else if(c===sep){r.push(f);f=''}
+    else if(c==='\n'||c==='\r'){if(c==='\r'&&txt[i+1]==='\n')i++;r.push(f);f='';rows.push(r);r=[]}
+    else f+=c}
+  if(f!==''||r.length){r.push(f);rows.push(r)}
+  return rows.filter(r=>r.some(x=>String(x).trim()!==''))}
+function loadXLSX(){return new Promise((ok,no)=>{if(window.XLSX)return ok();const s=document.createElement('script');s.src='https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js';s.onload=ok;s.onerror=()=>no(new Error('offline'));document.head.appendChild(s)})}
+function guessMap(I){
+  const h=(I.hasHeader&&I.rows[0]||[]).map(x=>String(x).toLowerCase()),used=new Set(),M={};
+  const rx={date:/date|তারিখ/,debit:/debit|paid|expense|payment|out\b|ব্যয়/,credit:/credit|receiv|income|collection|জমা/,amount:/amount|taka|টাকা|total/,dir:/^(type|direction)|type\b/,cat:/categor|item|head|particular|description|purpose|বিবরণ/,from:/from|flat|name|source|resident|ফ্ল্যাট/,note:/note|remark|detail|memo/,forMonth:/for.?month|service.?month/};
+  ['date','debit','credit','forMonth','amount','dir','cat','from','note'].forEach(k=>{const i=h.findIndex((x,j)=>!used.has(j)&&rx[k].test(x));if(i>=0){M[k]=String(i);used.add(i)}else M[k]=''});
+  I.map=M}
+function impFile(f){
+  const I=ui.imp={file:f.name,rows:null,hasHeader:true,map:{},defDir:'e',prev:null,res:null,allowDup:false};
+  const fin=rows=>{I.rows=rows;if(!rows.length){alert('No rows were found in this file.');ui.imp=null}else guessMap(I);render()};
+  const r=new FileReader();
+  if(/\.xlsx?$/i.test(f.name)){
+    loadXLSX().then(()=>{r.onload=()=>{try{I.wb=XLSX.read(r.result,{type:'array'});I.sheet=I.wb.SheetNames[0];fin(XLSX.utils.sheet_to_json(I.wb.Sheets[I.sheet],{header:1,raw:true,defval:''}).filter(x=>x.some(v=>String(v).trim()!=='')))}catch(e){alert('Could not read this Excel file: '+e.message+'\nTip: in Excel use File → Save As → CSV and import that.');ui.imp=null;render()}};r.readAsArrayBuffer(f)})
+    .catch(()=>{alert('Reading .xlsx needs a one-time internet connection to load the Excel reader.\n\nOffline? Open the workbook in Excel and choose File → Save As → CSV, then import the CSV.');ui.imp=null})}
+  else{r.onload=()=>fin(parseCSV(String(r.result)));r.readAsText(f)}}
+function impPreview(){
+  const I=ui.imp,M=I.map,start=I.hasHeader?1:0,out=[],seen=new Map(),ex=new Map(),cats=new Set(categories().map(c=>c.toLowerCase())),flats=new Set(db.settings.flats.map(f=>f.id));
+  const g=(r,k)=>M[k]===''||M[k]==null?'':r[+M[k]];
+  db.collections.forEach(c=>ex.set(dupKey(c.date,'c',c.amount,c.from||c.type),'an existing receipt'));
+  db.expenses.forEach(e=>ex.set(dupKey(e.date,'e',e.amount,e.category),'an existing expense'));
+  I.rows.slice(start).forEach((r,i)=>{
+    const n=i+start+1,er=[],wr=[];let dir=null,amt=null;
+    const dt=parseDate(g(r,'date'));if(!dt.ok)er.push('Date '+dt.err);
+    const hasDC=M.debit!==''&&M.debit!=null||M.credit!==''&&M.credit!=null;
+    if(hasDC){const d=parseAmt(g(r,'debit')),c=parseAmt(g(r,'credit'));
+      if(Number.isNaN(d)||Number.isNaN(c))er.push('Debit/Credit is not a number – remove text or symbols from the amount');
+      else if(d>0&&c>0)er.push('Both Paid and Received are filled – keep only one per row');
+      else if(d>0){dir='e';amt=d}else if(c>0){dir='c';amt=c}else er.push('No amount in the Paid/Received columns')}
+    else{const a=parseAmt(g(r,'amount'));
+      if(a===null)er.push('Amount is blank');else if(Number.isNaN(a))er.push('Amount “'+g(r,'amount')+'” is not a number – use digits only, e.g. 12500');else if(a<=0)er.push('Amount must be above zero – use the Type column to show money paid');else amt=a;
+      if(M.dir!==''&&M.dir!=null){dir=parseDir(g(r,'dir'));if(!dir)er.push('Type “'+g(r,'dir')+'” is not understood – use Received or Paid')}else dir=I.defDir}
+    const cat=String(g(r,'cat')).trim(),from=String(g(r,'from')).trim(),note=String(g(r,'note')).trim();
+    let rec=null;
+    if(!er.length){
+      if(dir==='e'){if(!cat)er.push('Category / item is required for expenses');else{if(!cats.has(cat.toLowerCase()))wr.push('new category “'+cat+'”');rec={k:'e',date:dt.iso,category:cat,amount:amt,note:[from,note].filter(Boolean).join(' – '),fundId:''}}}
+      else{let type=Object.keys(TYPES).find(k=>k===cat.toLowerCase()||TYPES[k].toLowerCase()===cat.toLowerCase())||(/service/i.test(cat)?'service':null);
+        if(!type)type=flats.has(from)?'service':'other';
+        if(type==='special')er.push('Special-fund receipts cannot be imported – import as “Other income” or add them in Special Funds');
+        else if(type==='service'&&!flats.has(from))er.push('Service charge needs a flat number from Settings → Flats (found “'+from+'”)');
+        else{let fm='';if(type==='service'){const p=String(g(r,'forMonth')).trim();fm=/^\d{4}-\d{2}$/.test(p)?p:dt.iso.slice(0,7)}
+          rec={k:'c',date:dt.iso,type,from,amount:amt,note,forMonth:fm,fundId:''}}}}
+    if(er.length){out.push({n,st:'bad',msg:er,raw:r});return}
+    const key=rec.k==='c'?dupKey(rec.date,'c',rec.amount,rec.from||rec.type):dupKey(rec.date,'e',rec.amount,rec.category);
+    let st='ok';
+    if(ex.has(key)){st='dup';wr.push('looks like '+ex.get(key))}else if(seen.has(key)){st='dup';wr.push('same as row '+seen.get(key)+' in this file')}else seen.set(key,n);
+    out.push({n,st,msg:wr,rec,raw:r})});
+  I.prev={rows:out,ok:out.filter(x=>x.st==='ok').length,dup:out.filter(x=>x.st==='dup').length,bad:out.filter(x=>x.st==='bad').length}}
+function vImp(){
+  const I=ui.imp,sel=(k,l)=>`<label>${l}<select data-imp="map.${k}"><option value="">— not in my file —</option>${(I.rows[0]||[]).map((h,i)=>`<option value="${i}" ${I.map[k]===String(i)?'selected':''}>${I.hasHeader?esc(h)||'(blank)':'Column '+(i+1)}${I.hasHeader?' ('+(i+1)+')':''}</option>`).join('')}</select></label>`;
+  return `<h2>Import old records</h2><p class="sub">Bring in Excel/CSV records (for example 2023–2025). Nothing is saved until you press <b>Import</b>, existing records are never changed, and original dates are kept.</p>
+  <div class="card"><h3>1. Choose file</h3><input type="file" id="impfile" accept=".csv,.txt,.xlsx,.xls"><p class="sub" style="margin:8px 0 0">CSV works offline. Excel (.xlsx) loads a reader from the internet once; if offline, save the sheet as CSV. Dates are read as <b>DD/MM/YYYY</b> (or YYYY-MM-DD). The first sheet is used unless you pick another.</p></div>
+  ${I&&I.rows?`<div class="card"><h3>2. Match columns – ${esc(I.file)} <span class="tag">${I.rows.length-(I.hasHeader?1:0)} data rows</span></h3>
+   <div class="row" style="margin-bottom:10px">${I.wb&&I.wb.SheetNames.length>1?`<label>Sheet<select data-imp="sheet">${I.wb.SheetNames.map(n=>`<option ${n===I.sheet?'selected':''}>${esc(n)}</option>`).join('')}</select></label>`:''}<label class="chk"><input type="checkbox" data-imp="hasHeader" ${I.hasHeader?'checked':''}> First row has column names</label><label>If there is no Type / Paid / Received column, treat every row as<select data-imp="defDir"><option value="e" ${I.defDir==='e'?'selected':''}>Expense (paid)</option><option value="c" ${I.defDir==='c'?'selected':''}>Collection (received)</option></select></label></div>
+   <div class="dlg" style="max-width:none;padding:0"><div class="grid" style="margin-top:0">${IMPF.map(([k,l])=>sel(k,l)).join('')}</div></div>
+   <div class="scroll"><table class="small"><tr>${(I.rows[0]||[]).map(x=>`<th>${I.hasHeader?esc(x):''}</th>`).join('')}</tr>${I.rows.slice(I.hasHeader?1:0,(I.hasHeader?1:0)+3).map(r=>`<tr>${r.map(x=>`<td>${esc(x)}</td>`).join('')}</tr>`).join('')}</table></div>
+   <div class="pill-row" style="margin-top:10px"><button class="pri" data-act="impPrev">Test / preview import</button></div></div>`:''}
+  ${I&&I.prev?impPrevHTML(I):''}
+  ${I&&I.res?`<div class="card"><h3>Import finished</h3><div class="cards" style="margin:0 0 8px"><div class="stat"><div class="l">Imported</div><div class="v pos">${I.res.imp}</div></div><div class="stat"><div class="l">Skipped (duplicates)</div><div class="v">${I.res.dup}</div></div><div class="stat"><div class="l">Rejected (invalid)</div><div class="v ${I.res.bad?'neg':''}">${I.res.bad}</div></div></div>${I.res.rej.length?`<button data-act="impRej">⬇ Download rejected rows (CSV) to correct and re-import</button>`:''}</div>`:''}
+  ${db.imports.length?`<div class="card"><h3>Import history</h3><table>${db.imports.map(b=>`<tr><td>${new Date(b.ts).toLocaleString()}</td><td>${esc(b.file)}</td><td>${b.count} record(s)</td><td class="r"><button class="sm danger" data-act="impUndo" data-id="${b.id}">Undo this import</button></td></tr>`).join('')}</table></div>`:''}`}
+function impPrevHTML(I){const P=I.prev,sh=P.rows.slice(0,300);
+  return `<div class="card"><h3>3. Preview – nothing saved yet</h3><div class="cards" style="margin:0 0 8px"><div class="stat"><div class="l">Ready to import</div><div class="v pos">${P.ok}</div></div><div class="stat"><div class="l">Possible duplicates</div><div class="v">${P.dup}</div><div class="n">skipped unless ticked below</div></div><div class="stat"><div class="l">Invalid (rejected)</div><div class="v ${P.bad?'neg':''}">${P.bad}</div></div></div>
+  ${P.bad?`<div class="note"><b>How to fix invalid rows:</b> correct them in your spreadsheet (see the reason on each red row) and import again, or ignore them – invalid rows are never imported.</div>`:''}
+  <div class="scroll" style="max-height:380px"><table class="small"><tr><th>Row</th><th>Date</th><th>Kind</th><th>Item / from</th><th class="r">Amount</th><th>Result</th></tr>${sh.map(x=>{const q=x.rec;return `<tr><td>${x.n}</td><td>${q?dFmt(q.date):''}</td><td>${q?(q.k==='c'?'Received':'Paid'):''}</td><td>${q?esc(q.k==='c'?(TYPES[q.type]+(q.from?' – '+q.from:'')):q.category):'<span class="muted">'+esc(x.raw.join(' | ').slice(0,60))+'</span>'}</td><td class="r">${q?money(q.amount):''}</td><td><span class="tag ${x.st==='ok'?'g':x.st==='dup'?'a':'r'}">${x.st==='ok'?'OK':x.st==='dup'?'Duplicate?':'Invalid'}</span> ${esc(x.msg.join('; '))}</td></tr>`}).join('')}</table></div>${P.rows.length>300?`<p class="sub">Showing the first 300 of ${P.rows.length} rows.</p>`:''}
+  <div class="row" style="margin-top:10px">${P.dup?`<label class="chk grow"><input type="checkbox" data-imp="allowDup" ${I.allowDup?'checked':''}> Import the possible duplicates too</label>`:''}<button class="pri" data-act="impGo" ${P.ok||(I.allowDup&&P.dup)?'':'disabled'}>Import ${P.ok+(I.allowDup?P.dup:0)} record(s)</button></div></div>`}
+
+/* ---------- new actions ---------- */
+Object.assign(A,{
+  goRem:()=>{closeModal();ui.tab='rem';ui.month=thisMonth();render();window.scrollTo(0,0)},
+  goRev:d=>{closeModal();ui.tab='rem';ui.month=d.m;render()},
+  yrToggle:()=>{ui.ry=ui.ry?0:(+ui.month.slice(0,4));render()},
+  expAdd:()=>expectedForm(),expEdit:d=>expectedForm(db.expected.find(x=>x.id===d.id)),
+  expToggle:d=>{const x=db.expected.find(z=>z.id===d.id);x.active=!x.active;save();render()},
+  expDel:d=>{const x=db.expected.find(z=>z.id===d.id);confirmDel('Delete “'+x.name+'” from expected expenses? (Past checklist history for it will no longer be shown; recorded expenses are not affected.)',()=>db.expected=db.expected.filter(z=>z.id!==d.id))},
+  chkEnter:d=>markDlg(d.key),paidDlg:d=>paidDlg(d.key),chkPaid:d=>paidDlg(d.key),chkNA:d=>naDlg(d.key),chkDefer:d=>deferDlg(d.key),
+  chkReopen:d=>{const o=occByKey(d.key);if(confirm('Reopen “'+(o?o.x.name:'this item')+'”? Its status goes back to Pending (the recorded expense, if any, is not deleted).')){delete db.checks[d.key];logRem('chk:'+d.key,o?o.x.name:d.key,'reopened');save();render()}},
+  chkCreate:d=>{const o=occByKey(d.key);closeModal();expForm(null,{date:o.due<=today()?o.due:today(),category:o.x.category,amount:o.amount||'',note:o.x.person||'',linkKey:d.key})},
+  rmDone:d=>markDlg(d.id.slice(4)),rmNA:d=>naDlg(d.id.slice(4)),
+  rmSnooze:d=>{const r=pendingReminders().find(x=>x.id===d.id);snoozeDlg(d.id,r?r.label:d.id)},
+  rmDismiss:d=>{const r=pendingReminders().find(x=>x.id===d.id);db.dismissed[d.id]=Date.now();logRem(d.id,r?r.label:d.id,'dismissed');save();render()},
+  dayAdd:d=>expForm(null,{date:d.d}),
+  dayDone:d=>{const dt=d.id.slice(4);if(!db.expenses.some(e=>e.date===dt))return alert('No expense is recorded with the date '+dFmt(dt)+' yet. Add the expense first, or choose “None paid”.');db.dailyLog[dt]={r:'recorded',ts:Date.now()};logRem(d.id,'Expenses for '+dFmt(dt),'completed – recorded');save();render()},
+  dayNone:d=>{const dt=d.id.slice(4);db.dailyLog[dt]={r:'none',ts:Date.now()};logRem(d.id,'Expenses for '+dFmt(dt),'completed – none paid');save();render()},
+  revDone:d=>{const f=monthFlags(d.m);if(f.length&&!confirm('Some items are still open:\n\n• '+f.join('\n• ')+'\n\nMark the month as reviewed anyway?'))return;db.monthReview[d.m]={ts:Date.now(),open:f.length};logRem('mrev:'+d.m,'Review of '+mLabel(d.m),'completed');save();render()},
+  revReopen:d=>{delete db.monthReview[d.m];save();render()},
+  notifOn:()=>{if(!('Notification' in window))return toast('Notifications are not supported in this browser');Notification.requestPermission().then(p=>{db.rem.notify=p==='granted';save();render();toast(p==='granted'?'Notifications on (only while this page is open)':'Permission not granted')})},
+  notifOff:()=>{db.rem.notify=false;save();render()},
+  notifTest:()=>{if('Notification' in window&&Notification.permission==='granted')new Notification(db.settings.building,{body:'Test notification – it works while this page is open.'});else toast('Enable notifications first')},
+  photoRm:()=>{db.settings.photo='';save();render()},
+  mgDownload:()=>{const r=localStorage.getItem(migrated.bk);if(r)download('shantir-neer-before-upgrade-'+today()+'.json',r,'application/json')},
+  mgHide:()=>{ui.hideMg=true;render()},
+  mgContinue:()=>{download('shantir-neer-before-upgrade-'+today()+'.json',migrated.raw,'application/json');migrated.ok=true;save();render()},
+  oldCopy:()=>{const ks=Object.keys(localStorage).filter(k=>k.startsWith(KEY+'_backup_v')).sort();if(!ks.length)return toast('No pre-upgrade copy found in this browser');download(ks[ks.length-1]+'.json',localStorage.getItem(ks[ks.length-1]),'application/json')},
+  impPrev:()=>{const I=ui.imp;if(I.map.date===''){return alert('Choose which column holds the Date.')}if(I.map.amount===''&&I.map.debit===''&&I.map.credit==='')return alert('Choose the Amount column (or Paid / Received columns).');impPreview();I.res=null;render();window.scrollTo(0,document.body.scrollHeight)},
+  impGo:()=>{const I=ui.imp,P=I.prev,take=P.rows.filter(x=>x.st==='ok'||(x.st==='dup'&&I.allowDup));if(!take.length)return toast('Nothing to import');
+    if(!confirm('Import '+take.length+' record(s) from “'+I.file+'”?\n\nExisting records will not be changed. You can undo this import afterwards from Import history.'))return;
+    try{localStorage.setItem(KEY+'_preimport',JSON.stringify(db))}catch(e){if(!confirm('A safety snapshot could not be stored (browser storage full). Import anyway?'))return}
+    const bid=uid();take.forEach(x=>{const q=x.rec,b={id:uid(),importId:bid,date:q.date,amount:q.amount,note:q.note,fundId:''};
+      if(q.k==='c')db.collections.push(Object.assign(b,{type:q.type,from:q.from,forMonth:q.forMonth}));else db.expenses.push(Object.assign(b,{category:q.category}))});
+    db.imports.unshift({id:bid,ts:Date.now(),file:I.file,count:take.length});
+    I.res={imp:take.length,dup:P.dup-take.filter(x=>x.st==='dup').length,bad:P.bad,rej:P.rows.filter(x=>x.st==='bad')};I.prev=null;save();render();toast(take.length+' records imported')},
+  impRej:()=>{const q=v=>'"'+String(v??'').replace(/"/g,'""')+'"',I=ui.imp,h=I.hasHeader?I.rows[0]:[];download('rejected-rows-'+today()+'.csv','\uFEFF'+[['Row','Why rejected',...h].map(q).join(','),...I.res.rej.map(x=>[x.n,x.msg.join('; '),...x.raw].map(q).join(','))].join('\n'),'text/csv')},
+  impUndo:d=>{const b=db.imports.find(x=>x.id===d.id);if(!confirm('Remove the '+b.count+' record(s) imported from “'+b.file+'”?\n(Records you edited after importing are removed too.)'))return;db.collections=db.collections.filter(c=>c.importId!==d.id);db.expenses=db.expenses.filter(e=>e.importId!==d.id);db.imports=db.imports.filter(x=>x.id!==d.id);save();render();toast('Import undone')}
+});
+
+document.addEventListener('click',e=>{const b=e.target.closest('[data-act]');if(!b)return;e.preventDefault();const f=A[b.dataset.act];f&&f(b.dataset,b)});
+document.addEventListener('change',e=>{
+  const t=e.target;
+  if(t.dataset.chg==='mSet'){if(t.value){ui.month=t.value;render()}}
+  else if(t.dataset.chg==='ySet'){ui.year=+t.value;render()}
+  else if(t.dataset.chg==='yJump'){ui.month=t.value+ui.month.slice(4);render()}
+  else if(t.dataset.chg==='rySet'){ui.ry=+t.value;render()}
+  else if(t.dataset.setchk){setPath(t.dataset.setchk,t.checked);save();render()}
+  else if(t.dataset.imp){const I=ui.imp,k=t.dataset.imp;
+    if(k==='hasHeader'){I.hasHeader=t.checked;guessMap(I)}else if(k==='allowDup')I.allowDup=t.checked;else if(k==='defDir'){I.defDir=t.value;I.prev=null}
+    else if(k==='sheet'){I.sheet=t.value;I.rows=XLSX.utils.sheet_to_json(I.wb.Sheets[t.value],{header:1,raw:true,defval:''}).filter(x=>x.some(v=>String(v).trim()!==''));guessMap(I);I.prev=null}
+    else{I.map[k.slice(4)]=t.value;I.prev=null}
+    render()}
+  else if(t.id==='impfile'&&t.files[0]){impFile(t.files[0]);t.value=''}
+  else if(t.id==='photoFile'&&t.files[0]){const r=new FileReader();r.onload=()=>{const im=new Image();im.onload=()=>{const w=Math.min(700,im.width),c=document.createElement('canvas');c.width=w;c.height=Math.round(im.height*w/im.width);c.getContext('2d').drawImage(im,0,0,c.width,c.height);db.settings.photo=c.toDataURL('image/jpeg',.8);save();render()};im.src=r.result};r.readAsDataURL(t.files[0]);t.value=''}
+  else if(t.dataset.set){setPath(t.dataset.set,t.dataset.type==='n'?num(t.value):t.value);save();if(['settings.building','settings.startMonth'].includes(t.dataset.set))render()}
+  else if(t.id==='file'&&t.files[0]){doRestore(t.files[0]);t.value=''}
+});
+document.addEventListener('toggle',e=>{const d=e.target;if(d.dataset&&d.dataset.fid)ui.open[d.dataset.fid]=d.open},true);
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
+
+/* ===== v3 additions ===== */
+function okL(l){return !l.status||l.status==='Approved'}
+const advOut=sid=>sumOf(db.advances.filter(a=>a.staffId===sid))-sumOf(db.advRec.filter(r=>r.staffId===sid),r=>r.amount);
+const advDed=sid=>{const o=advOut(sid),a=db.advances.filter(x=>x.staffId===sid).slice(-1)[0];return o>0&&a?Math.min(o,num(a.inst)||o):0};
+function advForm(){const gs=db.staff.filter(x=>x.active&&x.role==='Guard');if(!gs.length)return alert('No active guard');
+ modal('Advance salary',F.sel('staffId','Guard',gs.map(x=>[x.id,x.name]),gs[0].id)+F.date('date','Date paid',defaultDate(ui.month),'required')+F.num('amount','Advance amount','','required')+F.num('inst','Deduct per month (blank = all next month)')+F.text('note','Note','','','full'),d=>{
+  const amt=num(d.amount);if(!amt){alert('Enter amount');return false}
+  const a={id:uid(),staffId:d.staffId,date:d.date,amount:amt,inst:num(d.inst),note:d.note.trim()};
+  const e={id:uid(),date:d.date,category:'Advance - '+staffName(d.staffId),amount:amt,note:a.note,fundId:'',advId:a.id};
+  a.expenseId=e.id;db.advances.push(a);db.expenses.push(e);toast('Saved')})}
+const _vStaff=vStaff;
+vStaff=function(){return _vStaff()+`<div class="card"><div class="row"><h3 class="grow">Advance salary</h3><button class="pri" data-act="addAdv">＋ Advance</button></div>${db.staff.filter(x=>advOut(x.id)>0).map(x=>`<div>${esc(x.name)}: outstanding <b>${cur(advOut(x.id))}</b> · next deduction ${cur(advDed(x.id))}</div>`).join('')||'<p class="sub">No outstanding advance.</p>'}${db.advances.length?`<div class="scroll"><table>${db.advances.slice().reverse().map(a=>`<tr><td>${dFmt(a.date)}</td><td>${esc(staffName(a.staffId))}</td><td class="r">${money(a.amount)}</td><td>${esc(a.note||'')}</td><td><button class="sm danger" data-act="delAdv" data-id="${a.id}">Delete</button></td></tr>`).join('')}</table></div>`:''}<p class="sub" style="margin:8px 0 0">Deduction is applied automatically in “Monthly recurring expenses”.</p></div>`};
+Object.assign(A,{addAdv:advForm,delAdv:d=>confirmDel('Delete this advance and its expense?',()=>{const a=db.advances.find(x=>x.id===d.id);db.expenses=db.expenses.filter(e=>e.id!==a.expenseId);db.advances=db.advances.filter(x=>x!==a)}),
+ abPick:async()=>{try{abH=await showDirectoryPicker({mode:'readwrite'});await idb('readwrite',s=>s.put(abH,'h'));autoBackup();render();toast('Auto backup folder set')}catch(e){}},
+ abPerm:async()=>{try{if(await abH.requestPermission({mode:'readwrite'})==='granted'){autoBackup();render()}}catch(e){}}});
+/* auto backup */
+let abH=null,abT;
+function idb(mode,fn){return new Promise(res=>{try{const q=indexedDB.open('sn_ab',1);q.onupgradeneeded=()=>q.result.createObjectStore('k');q.onsuccess=()=>{const r=fn(q.result.transaction('k',mode).objectStore('k'));r.onsuccess=()=>res(r.result);r.onerror=()=>res()};q.onerror=()=>res()}catch(e){res()}})}
+const _save=save;
+save=function(){_save();clearTimeout(abT);abT=setTimeout(autoBackup,1500)};
+async function autoBackup(){const j=JSON.stringify(db,null,1),n='shantir-neer-backup-'+today()+'.json';
+ if(abH){try{if(await abH.queryPermission({mode:'readwrite'})!=='granted'){ui.abNeed=1;return}
+  const w=await (await abH.getFileHandle(n,{create:true})).createWritable();await w.write(j);await w.close();
+  const ns=[];for await(const [k] of abH.entries())if(/^shantir-neer-backup-.*\.json$/.test(k))ns.push(k);ns.sort();while(ns.length>30)await abH.removeEntry(ns.shift());
+  db.lastBackup=Date.now();_save();ui.abNeed=0}catch(e){}}
+ else if(localStorage.getItem('sn_ab_day')!==today()){try{localStorage.setItem('sn_ab_day',today())}catch(e){}download(n,j,'application/json');db.lastBackup=Date.now();_save()}}
+const abCard=()=>`<div class="card"><h3>Auto backup</h3>${window.showDirectoryPicker?`<p class="sub">${abH?'Folder is set. A backup file is saved here after every entry (one file per day, last 30 days kept).':'Choose a folder (e.g. Google Drive / pen drive). A backup is then saved after every entry.'}</p>${ui.abNeed?'<button class="pri" data-act="abPerm">Allow backup folder</button> ':''}<button data-act="abPick">${abH?'Change':'Choose'} folder</button>`:'<p class="sub">This browser cannot write to a folder. One backup file will be downloaded automatically each day. Use Chrome/Edge on PC for folder backup.</p>'}</div>`;
+const _vSet=vSet;vSet=()=>abCard()+_vSet();
+const _vDash=vDash;vDash=()=>(ui.abNeed?'<div class="note no-print">💾 Auto backup needs permission. <button class="sm pri" data-act="abPerm">Allow</button></div>':'')+_vDash();
+idb('readonly',s=>s.get('h')).then(h=>{if(h){abH=h;autoBackup()}});
+/* missing expenses */
+function missingExp(m){if(m<db.settings.startMonth||m>thisMonth())return[];
+ const have=new Set(db.expenses.filter(e=>mOf(e.date)===m&&!e.fundId).map(e=>e.category));
+ return [...db.staff.filter(x=>x.active).map(x=>'Salary - '+x.name),...db.settings.recurring.map(r=>r.category)].filter(c=>c&&!have.has(c))}
+function missPop(){const m=ui.month,ms=missingExp(m);if(ui.missM===m||!ms.length||$('#modal').innerHTML)return;ui.missM=m;
+ $('#modal').innerHTML=`<div class="ov"><div class="dlg"><h3>⚠ ${mLabel(m)}: expenses not entered</h3><p class="sub">These common expenses have no entry this month:</p><ul>${ms.map(c=>`<li>${esc(bnCat(c))} <span class="sub">(${esc(c)})</span></li>`).join('')}</ul><div class="btns"><button data-act="closeModal">Continue to report</button><button class="pri" data-act="recur">Add now</button></div></div></div>`}
+/* Bengali report */
+const BNT={service:'সার্ভিস চার্জ',extra:'অতিরিক্ত আদায়',special:'বিশেষ তহবিল',garage:'গাড়ির গ্যারেজ ভাড়া',bike:'বাইক স্ট্যান্ড ভাড়া',other:'অন্যান্য আয়'};
+const BNC={'Water Bill':'পানির বিল','Electric Bill':'বিদ্যুৎ বিল','Moila Bill':'ময়লার বিল','Lift Service Fee':'লিফট সার্ভিস ফি','Internet':'ইন্টারনেট','Security Gas Cylinder':'সিকিউরিটি গ্যাস সিলিন্ডার','Eid Bonus':'ঈদ বোনাস','Eid Bokshish':'ঈদ বখশিশ','Cleaning Materials':'পরিষ্কারের সামগ্রী','Bodli Darowan':'বদলি দারোয়ান'};
+const bnCat=c=>BNC[c]||String(c).replace(/^Salary - /,'বেতন - ').replace(/^Advance - /,'অগ্রিম - ');
+const bnD=h=>h.replace(/>([^<]+)</g,(x,t)=>'>'+t.replace(/\d/g,d=>'০১২৩৪৫৬৭৮৯'[d])+'<');
+const bnM=m=>{const [y,k]=m.split('-').map(Number);return new Date(y,k-1,1).toLocaleString('bn-BD',{month:'long',year:'numeric'})};
+function reportHTML(m){const s=db.settings,y=m.slice(0,4),srt=(a,b)=>a.date<b.date?-1:1;
+ const fname=id=>(db.funds.find(f=>f.id===id)||{}).name||'';
+ const col=db.collections.filter(c=>mOf(c.date)===m&&!c.fundId).sort(srt),spCol=db.collections.filter(c=>mOf(c.date)===m&&c.fundId);
+ const exp=db.expenses.filter(e=>mOf(e.date)===m).sort(srt); /* special fund spending is an ordinary expense */
+ const op=openingGeneral(m),tc=sumOf(col)+sumOf(spCol),te=sumOf(exp),cl=op+tc-te,svc=col.filter(c=>c.type==='service');
+ const spBy={};spCol.forEach(c=>(spBy[c.fundId]=spBy[c.fundId]||[]).push(c));
+ /* pending special fund dues, up to the end of this month */
+ const pf=db.funds.filter(f=>mOf(f.date)<=m).map(f=>{const cs=db.collections.filter(c=>c.fundId===f.id&&mOf(c.date)<=m),per=num(f.perFlat),target=num(f.target),raised=sumOf(cs);
+  const dues=per>0?s.flats.map(x=>({id:x.id,d:Math.max(0,per-sumOf(cs.filter(c=>c.from===x.id)))})).filter(x=>x.d>0):[];
+  return{f,per,target,raised,dues,pend:per>0?sumOf(dues,x=>x.d):Math.max(0,target-raised)}}).filter(x=>x.pend>0);
+ const adv=db.staff.map(x=>({n:x.name,o:advOut(x.id)})).filter(x=>x.o>0);
+ const lv=db.staff.filter(x=>x.active&&x.role==='Guard').map(x=>({n:x.name,a:num(x.allowance),u:sumOf(db.leaves.filter(l=>l.staffId===x.id&&okL(l)&&l.type!=='Unpaid'),l=>leaveDaysYear(l,y))}));
+ let n=0;const H=t=>`<h4>${++n}. ${t}</h4>`;
+ return bnD(`<div class="report">${rptHead('<b>মাসিক হিসাব প্রতিবেদন – '+bnM(m)+'</b>')}${s.balanceVerified?'':'<p class="muted"><i>⚠ প্রারম্ভিক জের যাচাই করা হয়নি – হিসাব সাময়িক।</i></p>'}
+ <div class="kpis"><div class="kpi"><span>প্রারম্ভিক জের</span><b>${cur(op)}</b></div><div class="kpi"><span>মোট আয়</span><b>${cur(tc)}</b></div><div class="kpi"><span>মোট ব্যয়</span><b>${cur(te)}</b></div><div class="kpi"><span>সমাপনী জের</span><b>${cur(cl)}</b></div></div>
+ ${H('আয়')}<table><tr><th>খাত</th><th class="r">টাকা</th></tr><tr><td>সার্ভিস চার্জ (${new Set(svc.map(c=>c.from)).size}/${s.flats.length} ফ্ল্যাট, প্রতি ফ্ল্যাট ${cur(rateFor(m))})</td><td class="r">${money(sumOf(svc))}</td></tr>${['extra','garage','bike','other'].map(t=>{const a=col.filter(c=>c.type===t);return a.length?`<tr><td>${BNT[t]} (${a.length})</td><td class="r">${money(sumOf(a))}</td></tr>`:''}).join('')}${Object.entries(spBy).map(([id,a])=>`<tr><td>বিশেষ তহবিল – ${esc(fname(id))} (${a.length})</td><td class="r">${money(sumOf(a))}</td></tr>`).join('')}<tr class="tot"><td>মোট আয়</td><td class="r">${money(tc)}</td></tr></table>
+ ${H('ব্যয়')}${exp.length?`<table class="small"><tr><th>বিবরণ</th><th class="r">টাকা</th></tr>${exp.map(e=>`<tr><td>${esc(bnCat(e.category))}${isBill(e.category)&&e.billMonth?` <span class="nt">(${esc(bnM(e.billMonth))})</span>`:''}${e.fundId?` <span class="tag a">বিশেষ তহবিল: ${esc(fname(e.fundId))}</span>`:''}${e.note?`<span class="nt">${esc(e.note)}</span>`:''}</td><td class="r">${money(e.amount)}</td></tr>`).join('')}<tr class="tot"><td>মোট ব্যয় (${exp.length})</td><td class="r">${money(te)}</td></tr></table>`:'<p class="muted">এই মাসে কোনো ব্যয় নেই।</p>'}
+ ${pf.length?`${H('বকেয়া বিশেষ তহবিল')}${pf.map(x=>x.per>0?`<p style="margin:8px 0 3px"><b>${esc(x.f.name)}</b> <span class="muted">(প্রতি ফ্ল্যাট ${cur(x.per)})</span></p><table class="small"><tr><th>ফ্ল্যাট</th><th class="r">বকেয়া</th></tr>${x.dues.map(d=>`<tr><td>${esc(d.id)}</td><td class="r neg">${money(d.d)}</td></tr>`).join('')}<tr class="tot"><td>মোট বকেয়া (${x.dues.length} ফ্ল্যাট)</td><td class="r">${money(x.pend)}</td></tr></table>`:`<p style="margin:8px 0 3px"><b>${esc(x.f.name)}</b> <span class="muted">(লক্ষ্যমাত্রা ${cur(x.target)}, আদায় ${cur(x.raised)})</span> – বকেয়া <b class="neg">${cur(x.pend)}</b></p>`).join('')}`:''}
+ ${adv.length?`${H('অগ্রিম বেতন (বকেয়া)')}<table class="small">${adv.map(x=>`<tr><td>${esc(x.n)}</td><td class="r">${money(x.o)}</td></tr>`).join('')}</table>`:''}
+ ${H('ছুটির ব্যালান্স – '+y)}<table class="small"><tr><th>নাম</th><th class="r">বরাদ্দ</th><th class="r">ব্যবহৃত</th><th class="r">অবশিষ্ট</th></tr>${lv.map(x=>`<tr><td>${esc(x.n)}</td><td class="r">${x.a}</td><td class="r">${x.u}</td><td class="r">${x.a-x.u}</td></tr>`).join('')}</table><p class="muted" style="font-size:11px">প্রতি বছর ডিসেম্বরে ছুটির ব্যালান্স শূন্য হয়; জানুয়ারিতে নতুন ছুটি বরাদ্দ করা হয়।</p>
+ <p class="gen">প্রস্তুতের তারিখ: ${dFmt(today())}</p></div>`)}
+render();
+</script>
+</body>
+</html>
